@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "module": "ES2020",
+    "target": "ES2015",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "jsx": "react",
+    "outDir": "./esm",
+    "declaration": true,
+    "experimentalDecorators": true,
+  },
+  "include": [
+    "src/**/*",
+    "typings.d.ts"
+  ],
+  "exclude": [
+    "src/theme.ts",
+    "src/.umi/*",
+    "node_modules",
+    "build",
+    "dist",
+    "scripts",
+    "webpack",
+    "jest"
+  ]
+}
