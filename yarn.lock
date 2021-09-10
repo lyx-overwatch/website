@@ -3340,6 +3340,11 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
+classnames@^2.3.1:
+  version "2.3.1"
+  resolved "https://registry.nlark.com/classnames/download/classnames-2.3.1.tgz#dfcfa3891e306ec1dad105d0e88f4417b8535e8e"
+  integrity sha1-38+jiR4wbsHa0QXQ6I9EF7hTXo4=
+
 clean-css@^4.2.3:
   version "4.2.3"
   resolved "https://registry.nlark.com/clean-css/download/clean-css-4.2.3.tgz#507b5de7d97b48ee53d84adb0160ff6216380f78"
@@ -6928,12 +6933,14 @@ last-call-webpack-plugin@^3.0.0:
     lodash "^4.17.5"
     webpack-sources "^1.1.0"
 
-less-loader@^10.0.1:
-  version "10.0.1"
-  resolved "https://registry.nlark.com/less-loader/download/less-loader-10.0.1.tgz?cache=0&sync_timestamp=1625230455763&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fless-loader%2Fdownload%2Fless-loader-10.0.1.tgz#c05aaba68d00400820275f21c2ad87cb9fa9923f"
-  integrity sha1-wFqrpo0AQAggJ18hwq2Hy5+pkj8=
+less-loader@^7.3.0:
+  version "7.3.0"
+  resolved "https://registry.nlark.com/less-loader/download/less-loader-7.3.0.tgz?cache=0&sync_timestamp=1625230455763&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fless-loader%2Fdownload%2Fless-loader-7.3.0.tgz#f9d6d36d18739d642067a05fb5bd70c8c61317e5"
+  integrity sha1-+dbTbRhznWQgZ6Bftb1wyMYTF+U=
   dependencies:
     klona "^2.0.4"
+    loader-utils "^2.0.0"
+    schema-utils "^3.0.0"
 
 less@^4.1.1:
   version "4.1.1"
@@ -8856,10 +8863,12 @@ postcss@^8.1.0:
     nanoid "^3.1.23"
     source-map-js "^0.6.2"
 
-prefix-classname@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.nlark.com/prefix-classname/download/prefix-classname-1.0.3.tgz#81e9cf8d8bf5480359f371992640ce5199e9a142"
-  integrity sha1-genPjYv1SANZ83GZJkDOUZnpoUI=
+prefix-classnames@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.nlark.com/prefix-classnames/download/prefix-classnames-0.0.5.tgz?cache=0&sync_timestamp=1624414847982&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fprefix-classnames%2Fdownload%2Fprefix-classnames-0.0.5.tgz#d5b8312b6a808a8b1dcbeb7f41f0bf7705e4e029"
+  integrity sha1-1bgxK2qAiosdy+t/QfC/dwXk4Ck=
+  dependencies:
+    classnames "^2.3.1"
 
 prelude-ls@^1.2.1:
   version "1.2.1"
