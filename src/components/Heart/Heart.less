@@ -18,41 +18,35 @@
     }
     &heart {
       position: relative;
-      content: "";
       display: block;
-      width: 30px;
-      min-height: 24px;
+      width: 12px;
+      height: 12px;
       animation: bingle 8s infinite;
-      transform-origin: 50% 50% 0;
+      background: #ec4217f3;
+      transform: rotate(45deg);
     }
     &heart:before {
       content: "";
       display: block;
-      width: 15px;
-      height: 24px;
+      width: 12px;
+      height: 12px;
       position: absolute;
-      top: 0; 
-      left: 15px;
-      border-radius: 15px 15px 0 0;
+      left: -6px;
+      border-radius: 50%;
       background: #ec4217f3;
-      transform: rotateZ(-45deg);
-      transform-origin: 0 100% 0;
     }
     &heart:after {
       content: "";
       display: block;
-      width: 15px;
-      height: 24px;
+      width: 12px;
+      height: 12px;
       position: absolute;
-      top: 0; 
-      left: 0;
-      border-radius: 15px 15px 0 0;
+      border-radius: 50%;
       background: #ec4217f3;
-      transform: rotateZ(45deg);
-      transform-origin: 100% 100% 0;
+      top: -6px;
     }
     &text {
-      font-size: 18px;
+      font-size: 16px;
       color: rgb(204, 76, 97);
     }
   }

@@ -6,6 +6,7 @@ import React, { useState, useEffect, useRef } from "react";
 import pc from "prefix-classnames";
 import { getRandomVars } from './constant';
 import { hearts } from '../../home/constant';
+import { requestAnimationFrame, cancelAnimationFrame } from '@/utils';
 import "./Heart.less";
 
 const px = pc("lyx-website-comp-heart");
@@ -22,7 +23,7 @@ const Heart = (props: HeartProps) => {
   const [offsetY, setOffsetY] = useState<number>(0);
   const [text, setText] = useState<string>('');
 
-  const _this = useRef<{ timer: number, height: number, rootWidth: number}>(
+  const _this = useRef<{ timer: number, height: number, rootWidth: number }>(
     { timer: 0, height: 0, rootWidth: 0 }).current;
   const ref = useRef(null);
 
@@ -34,7 +35,7 @@ const Heart = (props: HeartProps) => {
     }
 
     return () => {
-      window.cancelAnimationFrame(_this.timer);
+      cancelAnimationFrame(_this.timer);
     }
   }, [])
 
@@ -46,8 +47,8 @@ const Heart = (props: HeartProps) => {
     friction: number, // x方向的摩擦力,用来控制x方向的速度
     isPositive: boolean // 方向
   ) => {
-    window.cancelAnimationFrame(_this.timer);
-    _this.timer = window.requestAnimationFrame(() => {
+    cancelAnimationFrame(_this.timer);
+    _this.timer = requestAnimationFrame(() => {
       const curXDis = friction * speed * 1;
       const X = isPositive ? offsetX + curXDis : offsetX - curXDis;
       const Y = offsetY + 1 * speed;
@@ -56,7 +57,7 @@ const Heart = (props: HeartProps) => {
       if (offsetY <= MaxY) {
         startMove(X, Y, MaxY, speed, friction, isPositive);
       } else {
-        window.cancelAnimationFrame(_this.timer);
+        cancelAnimationFrame(_this.timer);
         const { frictionX: curFriction, isPositive: curIsPosition, speed: curSpeed, curOffsetX: curOriginX } = getRandomVars(_this.rootWidth, length, index);
         startMove(curOriginX, -_this.height, MaxY, curSpeed, curFriction, curIsPosition);
         setText('');

@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import pc from 'prefix-classnames'
 import Heart from '../components/Heart'
 import { hearts, start } from './constant'
+import { requestAnimationFrame, cancelAnimationFrame } from '@/utils';
 import './Home.less'
 
 const px = pc('lyx-website')
@@ -15,7 +16,7 @@ const Home = () => {
 
   const getCurDay = () => {
     window.cancelAnimationFrame(_this.startTimer);
-    _this.startTimer = window.requestAnimationFrame(() => {
+    _this.startTimer = requestAnimationFrame(() => {
       if (_this.startDay) {
         const cur = new Date();
         const len = cur.getTime() - _this.startDay.getTime();
@@ -43,7 +44,7 @@ const Home = () => {
     getCurDay();
 
     return () => {
-      window.cancelAnimationFrame(_this.startTimer);
+      cancelAnimationFrame(_this.startTimer);
     }
   }, [])
 
