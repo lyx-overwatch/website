@@ -1,0 +1,43 @@
+@prefix: lyx-website-comp-heart;
+
+.@{prefix} {
+  &- {
+    &root {
+      position: absolute;
+    }
+    &heart {
+      position: relative;
+      content: "";
+      display: block;
+      width: 30px;
+      min-height: 24px;
+      transform-origin: 50% 50% 0;
+    }
+    &heart:before {
+      content: "";
+      display: block;
+      width: 15px;
+      height: 24px;
+      position: absolute;
+      top: 0; 
+      left: 15px;
+      border-radius: 15px 15px 0 0;
+      background: #ec4217f3;
+      transform: rotateZ(-45deg);
+      transform-origin: 0 100% 0;
+    }
+    &heart:after {
+      content: "";
+      display: block;
+      width: 15px;
+      height: 24px;
+      position: absolute;
+      top: 0; 
+      left: 0;
+      border-radius: 15px 15px 0 0;
+      background: #ec4217f3;
+      transform: rotateZ(45deg);
+      transform-origin: 100% 100% 0;
+    }
+  }
+}
