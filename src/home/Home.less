@@ -9,5 +9,18 @@
       background-color: wheat;
       overflow: hidden;
     }
+    &current {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: rgb(49, 2, 49);
+      & > span {
+        display: contents;
+        color: rgb(226, 122, 140);
+      }
+    }
   }
 }

@@ -5,12 +5,24 @@
     &root {
       position: absolute;
     }
+    @keyframes bingle {
+      0% {
+        transform: rotate(0deg);
+      }
+      50% {
+        transform: rotate(180deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
     &heart {
       position: relative;
       content: "";
       display: block;
       width: 30px;
       min-height: 24px;
+      animation: bingle 8s infinite;
       transform-origin: 50% 50% 0;
     }
     &heart:before {
@@ -38,6 +50,10 @@
       background: #ec4217f3;
       transform: rotateZ(45deg);
       transform-origin: 100% 100% 0;
+    }
+    &text {
+      font-size: 18px;
+      color: rgb(204, 76, 97);
     }
   }
 }
