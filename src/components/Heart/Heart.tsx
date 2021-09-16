@@ -14,31 +14,39 @@ interface HeartProps {
 
 const Heart = (props: HeartProps) => {
   const { rootHeight, rootWidth } = props;
+  const [offsetX, setOffsetX] = useState<number>(0);
   const [offsetY, setOffsetY] = useState<number>(0);
   const _this = useRef<{ timer: number }>({ timer: 0 }).current;
 
-  useEffect(() => {
-    const xTranslation = 100 * Math.random();
-  }, []);
-
-  const startMove = (offsetY: number) => {
+  const startMove = (
+    offsetX: number,
+    offsetY: number,
+    friction: number, // x方向的摩擦力
+    MaxY: number
+  ) => {
     window.cancelAnimationFrame(_this.timer);
     _this.timer = window.requestAnimationFrame(() => {
+      const X = friction * (offsetX + 1);
+      setOffsetX(X);
       setOffsetY(offsetY + 1);
-      if (rootHeight && offsetY <= rootHeight) startMove(offsetY + 1);
+      if (offsetY <= MaxY) startMove(offsetX + 1, offsetY + 1, friction, MaxY);
     });
   };
 
   useEffect(() => {
     if (rootHeight > 0 && rootWidth > 0) {
-      startMove(offsetY);
+      const frictionX = Math.random();
+      startMove(offsetX, offsetY, frictionX, rootHeight);
     }
   }, [rootHeight, rootWidth]);
 
   return (
     <div
       className={px("root")}
-      style={{ position: "absolute", transform: `translate(0, ${offsetY}px)` }}
+      style={{
+        position: "absolute",
+        transform: `translate(${offsetX}px, ${offsetY}px)`,
+      }}
     >
       <div className={px("heart")}></div>
     </div>
