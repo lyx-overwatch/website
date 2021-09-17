@@ -22,6 +22,7 @@ const Heart = (props: HeartProps) => {
   const [offsetX, setOffsetX] = useState<number>(0);
   const [offsetY, setOffsetY] = useState<number>(0);
   const [text, setText] = useState<string>('');
+  const [textColor, setColor] = useState<string>('#266352');
 
   const _this = useRef<{ timer: number, height: number, rootWidth: number }>(
     { timer: 0, height: 0, rootWidth: 0 }).current;
@@ -30,7 +31,7 @@ const Heart = (props: HeartProps) => {
   useEffect(() => {
     if (ref && ref.current) {
       const { clientHeight } = ref.current;
-      setOffsetY(-clientHeight);
+      setOffsetY(-2 * clientHeight);
       _this.height = clientHeight;
     }
 
@@ -67,17 +68,21 @@ const Heart = (props: HeartProps) => {
 
   useEffect(() => {
     if (rootHeight > 0 && rootWidth > 0) {
-      const { frictionX, isPositive, speed, curOffsetX } = getRandomVars(rootWidth, length, index);
+      const { startAnimationTime, frictionX, isPositive, speed, curOffsetX } = getRandomVars(rootWidth, length, index);
       _this.rootWidth = rootWidth;
       setOffsetX(curOffsetX);
-      startMove(curOffsetX, offsetY, rootHeight, speed, frictionX, isPositive);
+      const timer = setTimeout(() => {
+        clearTimeout(timer);
+        startMove(curOffsetX, offsetY, rootHeight, speed, frictionX, isPositive);
+      }, startAnimationTime);
     }
   }, [rootHeight, rootWidth]);
 
   const showText = () => {
-    const { curTextIndex } = getRandomVars(rootWidth, length, index);
+    const { curTextIndex, curTextColor } = getRandomVars(rootWidth, length, index);
     const curText = hearts[curTextIndex].text;
     setText(curText);
+    setColor(curTextColor);
   }
 
   const hideText = () => {
@@ -94,7 +99,7 @@ const Heart = (props: HeartProps) => {
       ref={ref}
     >
       <div style={{ display: !text ? '' : 'none' }} className={px('heart')} onClick={() => showText()}></div>
-      <div style={{ display: text ? '' : 'none' }} className={px('text')} onClick={() => hideText()}>{text}</div>
+      <div style={{ display: text ? '' : 'none', color: textColor }} className={px('text')} onClick={() => hideText()}>{text}</div>
     </div>
   )
 };

@@ -1,11 +1,11 @@
-import React, { useEffect, useState, useRef } from 'react'
-import pc from 'prefix-classnames'
-import Heart from '../components/Heart'
-import { hearts, start } from './constant'
+import React, { useEffect, useState, useRef } from 'react';
+import pc from 'prefix-classnames';
+import Heart from '../components/Heart';
+import { hearts, start, dynamicPreTexts, dynamicNextTexts, WRITER_CONFIG } from './constant';
 import { requestAnimationFrame, cancelAnimationFrame } from '@/utils';
-import './Home.less'
+import './Home.less';
 
-const px = pc('lyx-website')
+const px = pc('lyx-website');
 
 const Home = () => {
   const ref = useRef(null);
@@ -13,6 +13,7 @@ const Home = () => {
   const [rootHeight, setHetght] = useState<number>(0);
   const [rootWidth, setWidth] = useState<number>(0);
   const [day, setDay] = useState<number>(0);
+  const [showDayText, setShow] = useState<boolean>(false);
 
   const getCurDay = () => {
     window.cancelAnimationFrame(_this.startTimer);
@@ -46,7 +47,52 @@ const Home = () => {
     return () => {
       cancelAnimationFrame(_this.startTimer);
     }
-  }, [])
+  }, []);
+
+  const generateAnimation = async (list: Array<any>) => {
+    for (const write of list) {
+      await write.animateCharacter();
+    }
+    return true;
+  };
+
+  const showDay = () => {
+    new Promise(resolve => {
+      setTimeout(() => {
+        setShow(true);
+        resolve(true);
+      }, 500);
+    })
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve(true);
+      }, 1000);
+    })
+  }
+
+  const createText = async () => {
+    const preList: any[] = [];
+    const nextList: any[] = [];
+    dynamicPreTexts.forEach((item) => {
+      const { id, text } = item;
+      preList.push(window.HanziWriter.create(id, text, WRITER_CONFIG));
+
+    });
+    dynamicNextTexts.forEach((item) => {
+      const { id, text } = item;
+      nextList.push(window.HanziWriter.create(id, text, WRITER_CONFIG));
+
+    });
+    await generateAnimation(preList);
+    await showDay();
+    await generateAnimation(nextList);
+  }
+
+  useEffect(() => {
+    if (day && window.HanziWriter) {
+      createText();
+    }
+  }, [day])
 
   return (
     <div className={px('root')} ref={ref}>
@@ -62,7 +108,23 @@ const Home = () => {
           ></Heart>
         )
       })}
-      <div className={px('current')}>今天是刘先生和谢小姐在一起的第<span>{day}</span>天啦</div>
+      <div className={px('current')}>
+        <div className={px('text')}>
+          {
+            dynamicPreTexts.map((item) => {
+              const { id } = item;
+              return (<span id={id} key={id}></span>)
+            })
+          }
+          <div id="day" style={{ opacity: showDayText ? '1' : '0' }}>{day}</div>
+          {
+            dynamicNextTexts.map((item) => {
+              const { id } = item;
+              return (<span id={id} key={id}></span>)
+            })
+          }
+        </div>
+      </div>
     </div>
   )
 }

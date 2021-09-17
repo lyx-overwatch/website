@@ -13,3 +13,8 @@ declare module '*.less' {
   const res: KeyValue;
   export default res;
 }
+
+declare var window: Window & typeof globalThis;
+interface Window {
+  HanziWriter: any;
+}
