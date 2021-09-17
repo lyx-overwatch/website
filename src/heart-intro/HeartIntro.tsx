@@ -3,21 +3,22 @@ import pc from 'prefix-classnames';
 import Heart from '../components/Heart';
 import { hearts, start, dynamicPreTexts, dynamicNextTexts, WRITER_CONFIG } from './constant';
 import { requestAnimationFrame, cancelAnimationFrame } from '@/utils';
-import './Home.less';
+import './HeartIntro.less';
 
 const px = pc('lyx-website');
 
-const Home = () => {
+const HeartIntro = () => {
   const ref = useRef(null);
-  const _this = useRef<{ startTimer: number, startDay: any }>({ startDay: null, startTimer: 0 }).current;
+  const _this = useRef<{ startTimer: number, delayTimer: NodeJS.Timeout | number | undefined; startDay: any }>(
+    { startDay: null, delayTimer: 0, startTimer: 0 }).current;
   const [rootHeight, setHetght] = useState<number>(0);
   const [rootWidth, setWidth] = useState<number>(0);
   const [day, setDay] = useState<number>(0);
   const [showDayText, setShow] = useState<boolean>(false);
 
   const getCurDay = () => {
-    window.cancelAnimationFrame(_this.startTimer);
     _this.startTimer = requestAnimationFrame(() => {
+      cancelAnimationFrame(_this.startTimer);
       if (_this.startDay) {
         const cur = new Date();
         const len = cur.getTime() - _this.startDay.getTime();
@@ -46,6 +47,7 @@ const Home = () => {
 
     return () => {
       cancelAnimationFrame(_this.startTimer);
+      clearTimeout(_this.delayTimer as number);
     }
   }, []);
 
@@ -58,7 +60,8 @@ const Home = () => {
 
   const showDay = () => {
     new Promise(resolve => {
-      setTimeout(() => {
+      _this.delayTimer = setTimeout(() => {
+        clearTimeout(_this.delayTimer as number);
         setShow(true);
         resolve(true);
       }, 500);
@@ -129,4 +132,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default HeartIntro

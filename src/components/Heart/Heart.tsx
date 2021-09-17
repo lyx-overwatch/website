@@ -5,7 +5,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import pc from "prefix-classnames";
 import { getRandomVars } from './constant';
-import { hearts } from '../../home/constant';
+import { hearts } from '../../heart-intro/constant';
 import { requestAnimationFrame, cancelAnimationFrame } from '@/utils';
 import "./Heart.less";
 
@@ -24,8 +24,13 @@ const Heart = (props: HeartProps) => {
   const [text, setText] = useState<string>('');
   const [textColor, setColor] = useState<string>('#266352');
 
-  const _this = useRef<{ timer: number, height: number, rootWidth: number }>(
-    { timer: 0, height: 0, rootWidth: 0 }).current;
+  const _this = useRef<{
+    timer: number;
+    startTimer: NodeJS.Timeout | undefined | number;
+    height: number;
+    rootWidth: number;
+    textIndex: number;
+  }>({ timer: 0, startTimer: undefined, height: 0, rootWidth: 0, textIndex: -1 }).current;
   const ref = useRef(null);
 
   useEffect(() => {
@@ -37,7 +42,8 @@ const Heart = (props: HeartProps) => {
 
     return () => {
       cancelAnimationFrame(_this.timer);
-    }
+      clearTimeout(_this.startTimer as number);
+    };
   }, [])
 
   const startMove = (
@@ -58,7 +64,6 @@ const Heart = (props: HeartProps) => {
       if (offsetY <= MaxY) {
         startMove(X, Y, MaxY, speed, friction, isPositive);
       } else {
-        cancelAnimationFrame(_this.timer);
         const { frictionX: curFriction, isPositive: curIsPosition, speed: curSpeed, curOffsetX: curOriginX } = getRandomVars(_this.rootWidth, length, index);
         startMove(curOriginX, -_this.height, MaxY, curSpeed, curFriction, curIsPosition);
         setText('');
@@ -71,16 +76,26 @@ const Heart = (props: HeartProps) => {
       const { startAnimationTime, frictionX, isPositive, speed, curOffsetX } = getRandomVars(rootWidth, length, index);
       _this.rootWidth = rootWidth;
       setOffsetX(curOffsetX);
-      const timer = setTimeout(() => {
-        clearTimeout(timer);
+      _this.startTimer = setTimeout(() => {
+        clearTimeout(_this.startTimer as number);
         startMove(curOffsetX, offsetY, rootHeight, speed, frictionX, isPositive);
       }, startAnimationTime);
     }
+    return () => {
+      cancelAnimationFrame(_this.timer);
+      clearTimeout(_this.startTimer as number);
+    };
   }, [rootHeight, rootWidth]);
 
   const showText = () => {
     const { curTextIndex, curTextColor } = getRandomVars(rootWidth, length, index);
-    const curText = hearts[curTextIndex].text;
+    if (_this.textIndex < 0) {
+      _this.textIndex = curTextIndex;
+    } else {
+      _this.textIndex += 1;
+      _this.textIndex %= length;
+    }
+    const curText = hearts[_this.textIndex].text;
     setText(curText);
     setColor(curTextColor);
   }

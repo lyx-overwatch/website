@@ -1,4 +1,4 @@
-export const colors = ['#266352', '#0090e2', '#c48480', '#00b300', '#00afc3', '#8c60da', '#ac004a', '#00aeff', '#feff75'];
+export const colors = ['#266352', '#0090e2', '#c48480', '#00b300', '#00afc3', '#8c60da', '#ac004a', '#00aeff', '#de7d00'];
 
 export const getRandomVars = (rootWidth: number, length: number, index: number) => {
   const indexWidth = Math.floor((rootWidth / length));
