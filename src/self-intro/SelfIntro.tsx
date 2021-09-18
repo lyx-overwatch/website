@@ -6,7 +6,7 @@ import "./SelfIntro.scss";
 const SelfIntro = () => {
   return (
     <>
-      <PorticlePoint></PorticlePoint>
+      {/* <PorticlePoint></PorticlePoint> */}
       <FlashPoint></FlashPoint>
     </>
   );
