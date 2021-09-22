@@ -4,7 +4,6 @@ $light-shadow: #ffff62;
 
 .#{$prefix}-root {
   background-color: #000a27;
-  // background-color: rgb(2, 2, 44);
   height: 100%;
   width: 100%;
 }
@@ -20,6 +19,7 @@ $light-shadow: #ffff62;
 
 .#{$prefix}-firefly {
   position: fixed;
+  z-index: 999;
   left: 50%;
   top: 50%;
   width: 6px;

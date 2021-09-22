@@ -1,0 +1,158 @@
+
+.profile-card {
+  background: #FFB300;
+  width: 36px;
+  height: 36px;
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  z-index: 2;
+  overflow: hidden;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23);
+  animation: init 0.5s 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards, moveDown 1s 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards, moveUp 1s 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards, materia 0.5s 2.7s cubic-bezier(0.86, 0, 0.07, 1) forwards;
+
+  & > header {
+    display: inline-block;
+    width: 82px;
+    padding-top: 5px;
+    height: 100%;
+    color: #000000;
+    opacity: 0;
+    text-align: center;
+    -webkit-animation: moveIn 1s 3.1s ease forwards;
+    animation: moveIn 1s 3.1s ease forwards;
+
+    & > img {
+      width: (151.2px / 2);
+      height: (268.8px / 2);
+      border-radius: 4px;
+      transition: box-shadow 3s ease;
+    }
+  }
+
+  & > .profile-line {
+    width: 70%;
+    display: inline-block;
+    vertical-align: top;
+    opacity: 0;
+    animation: moveUpIn 1s 3.1s ease forwards;
+
+    .profile-item {
+      display: flex;
+      align-items: center;
+      margin: 5px;
+    }
+
+    .profile-icons {
+      display: inline-flex;
+      justify-content: center;
+      width: 30px;
+      height: 20px;
+    }
+
+    .profile-icon {
+      font-size: 16px;
+    }
+
+    .profile-icon-s {
+      font-size: 14px;
+    }
+
+    .profile-text {
+      font-size: 12px;
+      height: 20px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+@keyframes init {
+  0% {
+    width: 0px;
+    height: 0px;
+  }
+
+  100% {
+    width: 36px;
+    height: 36px;
+    margin-top: 0px;
+    opacity: 1;
+  }
+}
+
+@keyframes moveDown {
+  0% {
+    top: 10%;
+  }
+
+  50% {
+    top: 0;
+  }
+
+  100% {
+    top: 100%;
+  }
+}
+
+@keyframes moveUp {
+  0% {
+    background: #FFB300;
+    top: 100%;
+  }
+
+  50% {
+    top: 10%;
+  }
+
+  100% {
+    top: 120px;
+    background: #E0E0E0;
+  }
+}
+
+@keyframes materia {
+  0% {
+    background: #E0E0E0;
+  }
+
+  50% {
+    border-radius: 4px;
+  }
+
+  100% {
+    width: 320px;
+    height: 190px;
+    background: rgba(18, 159, 194, 0.993);
+    border-radius: 4px;
+    padding: 16px;
+  }
+}
+
+@keyframes moveIn {
+  0% {
+    margin-top: 80px;
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+    margin-top: 0px;
+  }
+}
+
+@keyframes moveUpIn {
+  0% {
+    margin-top: -80px;
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+    margin-top: 0px;
+  }
+}

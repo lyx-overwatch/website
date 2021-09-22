@@ -3,12 +3,16 @@ import "./FlashPoint.scss";
 
 const prefix = "lyx-website-background";
 
-const FlashPoint = () => {
+const FlashPoint = (props: any) => {
+  const { children } = props;
   return (
     <div className={`${prefix}-root`}>
       {Array.from({ length: 30 }).map((_, index) => {
         return <div className={`${prefix}-firefly`} key={index}></div>;
       })}
+      {
+        children
+      }
     </div>
   );
 };
