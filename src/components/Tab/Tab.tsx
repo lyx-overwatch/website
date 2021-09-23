@@ -9,7 +9,7 @@ const Tab = () => {
     <div className="wrapper">
       <div className="circle">
         <i className="iconfont icon-caidanguanli plus-icon"></i>
-        <i className="iconfont icon-zhuye social" onClick={() => histroy.push('/')}></i>
+        <i className="iconfont icon-zhuye social" onClick={() => histroy.push('/self')}></i>
         <i className="iconfont icon-icon2 social heart" onClick={() => histroy.push('/heart')}></i>
         <i className="iconfont icon-github social" onClick={() => window.location.href = 'https://github.com/lyx-overwatch/website'}></i>
       </div>

@@ -1,6 +1,7 @@
-$quantity: 30;
+$quantity: 20;
 $prefix: 'lyx-website-background';
-$light-shadow: #ffff62;
+$light: #fafa79;
+$light-shadow: #faea06;
 
 .#{$prefix}-root {
   background-color: #000a27;
@@ -32,13 +33,13 @@ $light-shadow: #ffff62;
   }
 
   &::before {
-    background: white;
+    background: $light;
     opacity: 0.5;
     animation: drift ease alternate infinite;
   }
 
   &::after {
-    background: white;
+    background: $light;
     opacity: 0;
     box-shadow: 0 0 0vw 0vw $light-shadow;
     animation: drift ease alternate infinite, flash ease infinite;

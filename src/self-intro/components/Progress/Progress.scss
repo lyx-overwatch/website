@@ -1,0 +1,53 @@
+.progress {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 10px;
+  width: 180px;
+  border: 2px solid #f4a261;
+  border-radius: 10px;
+  animation: scaleOut 2s 6.1s linear forwards;
+
+
+  .color {
+    position: absolute;
+    background-color: #ffffff;
+    width: 0px;
+    height: 6px;
+    border-radius: 10px;
+    animation: progress 6s 0s linear forwards, scaleOut 2s 6.1s linear forwards;
+  }
+}
+
+@keyframes progress {
+  0% {
+    width: 0%;
+  }
+
+  25% {
+    width: 10%;
+  }
+
+  50% {
+    width: 75%;
+  }
+
+  75% {
+    width: 90%;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes scaleOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

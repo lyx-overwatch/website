@@ -12,10 +12,22 @@ $backgroundColor: rgb(253, 192, 223);
   align-items: center;
 }
 
+@keyframes sacleIn {
+  0% {
+    transform: scale(0, 0) translateX(0%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1, 1) translateX(-50%);
+    opacity: 1;
+  }
+}
+
 .circle {
   position: absolute;
   right: 0;
-  transform: translateX(-50%);
+  opacity: 0;
   bottom: $circle-radius;
   margin-bottom: 0;
   height: $circle-radius;
@@ -30,6 +42,7 @@ $backgroundColor: rgb(253, 192, 223);
   z-index: 9;
   box-shadow: 0 5px 5px rgba(170, 170, 170, 0.35);
   transition: height 0.3s;
+  animation: sacleIn 2s 8.5s ease forwards;
 }
 
 .circle:hover {

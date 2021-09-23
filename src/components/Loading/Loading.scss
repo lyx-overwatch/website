@@ -1,4 +1,4 @@
-$black: #000;
+$black: rgb(49, 47, 47);
 $white: #fff;
 
 @mixin pseudo ($content: '') {
@@ -9,8 +9,9 @@ $white: #fff;
 #loading-container {
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 40%;
   transform: translate(-50%, -50%);
+  animation: scaleOut 2s 6.1s linear forwards;
 }
 
 .loading-text {
@@ -19,21 +20,21 @@ $white: #fff;
   font-size: 20px;
   margin: 0;
   white-space: nowrap;
-  &::before {
+  &:before {
     @include pseudo;
     z-index: 1;
     top: 10px;
-    left: 44px;
-    width: 3px;
-    height: 3px;
-    background: $black;
+    left: 43px;
+    width: 5px;
+    height: 5px;
+    background: $white;
     border-radius: 50%;
     animation: dotMove 1800ms cubic-bezier(0.25,0.25,0.75,0.75) infinite;
   }
   .letter {
     display: inline-block;
     position: relative;
-    color: $black;
+    color: $white;
     width: 20px;
     text-align: center;
     letter-spacing: 8px;
@@ -46,7 +47,7 @@ $white: #fff;
         left: 0;
         width: 14px;
         height: 20px;
-        background: $white;
+        background: $black;
         transform-origin: 100% 0;
         animation: lineStretch 1800ms cubic-bezier(0.25,0.25,0.75,0.75) infinite;
       }
@@ -59,7 +60,7 @@ $white: #fff;
         @include pseudo;
         width: 9px;
         height: 11px;
-        background: $white;
+        background: $black;
       }
     }
   }
@@ -118,5 +119,15 @@ $white: #fff;
   }
   68% {
     transform: scaleY(0.18);
+  }
+}
+
+@keyframes scaleOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
   }
 }
