@@ -18,7 +18,8 @@
   },
   "include": [
     "src/**/*",
-    "typings.d.ts"
+    "typings.d.ts",
+    ".eslintrc.js"
   ],
   "exclude": [
     "src/theme.ts",
