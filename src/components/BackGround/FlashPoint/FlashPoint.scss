@@ -5,6 +5,9 @@ $light-shadow: #faea06;
 
 .#{$prefix}-root {
   background-color: #000a27;
+  background-image: url('../../../assets/images/bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
   height: 100%;
   width: 100%;
 }

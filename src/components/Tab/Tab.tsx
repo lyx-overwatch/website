@@ -14,7 +14,6 @@ const Tab = () => {
         <i className="iconfont icon-github social" onClick={() => window.location.href = 'https://github.com/lyx-overwatch/website'}></i>
       </div>
     </div>
-
   )
 };
 

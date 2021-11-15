@@ -42,7 +42,8 @@ $backgroundColor: rgb(253, 192, 223);
   z-index: 9;
   box-shadow: 0 5px 5px rgba(170, 170, 170, 0.35);
   transition: height 0.3s;
-  animation: sacleIn 2s 8.5s ease forwards;
+  // animation: sacleIn 2s 8.5s ease forwards;
+  animation: sacleIn 2s 1.5s ease forwards;
 }
 
 .circle:hover {

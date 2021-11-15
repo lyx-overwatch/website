@@ -1,6 +1,6 @@
 
 .profile-card {
-  background: #FFB300;
+  background: rgba(18, 159, 194, 0.993);
   width: 36px;
   height: 36px;
   position: absolute;
@@ -16,7 +16,7 @@
 
   & > header {
     display: inline-block;
-    width: 82px;
+    width: 30%;
     padding-top: 5px;
     height: 100%;
     color: #000000;
@@ -34,6 +34,7 @@
   }
 
   & > .profile-line {
+    color: #fff;
     width: 70%;
     display: inline-block;
     vertical-align: top;
@@ -68,6 +69,11 @@
       white-space: nowrap;
       text-overflow: ellipsis;
     }
+    .profile-item:nth-child(2) {
+      .profile-text {
+        line-height: 13px;
+      }
+    }
   }
 }
 
@@ -101,7 +107,7 @@
 
 @keyframes moveUp {
   0% {
-    background: #FFB300;
+    background: rgba(18, 159, 194, 0.993);
     top: 100%;
   }
 
@@ -125,11 +131,13 @@
   }
 
   100% {
-    width: 320px;
+    padding: 0 20px;
+    width: calc(100% - 40px);
     height: 190px;
     background: rgba(18, 159, 194, 0.993);
     border-radius: 4px;
     padding: 16px;
+    opacity: .94;
   }
 }
 

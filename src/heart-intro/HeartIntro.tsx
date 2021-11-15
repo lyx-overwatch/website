@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import pc from "prefix-classnames";
 import Heart from "../components/Heart";
+import BaseLayout from "@/components/BaseLayout";
 import {
   hearts,
   start,
@@ -105,35 +106,37 @@ const HeartIntro = () => {
   }, [day]);
 
   return (
-    <div className={px("root")} ref={ref}>
-      {hearts.map((_, index) => {
-        const { length } = hearts;
-        return (
-          <Heart
-            key={index}
-            rootHeight={rootHeight}
-            rootWidth={rootWidth}
-            index={index + 1}
-            length={length}
-          ></Heart>
-        );
-      })}
-      <div className={px("current")}>
-        <div className={px("text")}>
-          {dynamicPreTexts.map((item) => {
-            const { id } = item;
-            return <span id={id} key={id}></span>;
-          })}
-          <div id="day" style={{ opacity: showDayText ? "1" : "0" }}>
-            {day}
+    <BaseLayout>
+      <div className={px("root")} ref={ref}>
+        {hearts.map((_, index) => {
+          const { length } = hearts;
+          return (
+            <Heart
+              key={index}
+              rootHeight={rootHeight}
+              rootWidth={rootWidth}
+              index={index + 1}
+              length={length}
+            ></Heart>
+          );
+        })}
+        <div className={px("current")}>
+          <div className={px("text")}>
+            {dynamicPreTexts.map((item) => {
+              const { id } = item;
+              return <span id={id} key={id}></span>;
+            })}
+            <div id="day" style={{ opacity: showDayText ? "1" : "0" }}>
+              {day}
+            </div>
+            {dynamicNextTexts.map((item) => {
+              const { id } = item;
+              return <span id={id} key={id}></span>;
+            })}
           </div>
-          {dynamicNextTexts.map((item) => {
-            const { id } = item;
-            return <span id={id} key={id}></span>;
-          })}
         </div>
       </div>
-    </div>
+    </BaseLayout>
   );
 };
 
