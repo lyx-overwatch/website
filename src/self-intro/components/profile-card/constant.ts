@@ -13,11 +13,11 @@ export const cardLines = [
   },
   {
     icon: 'icon-youxiang',
-    text: '2016903466@chd.edu.cn'
+    text: 'liuyunxiang3466@163.com'
   },
   {
     icon: 'icon-xiai',
-    text: 'Coding'
+    text: 'lol、overwatch、codeing'
   },
   {
     icon: 'icon-dizhi',

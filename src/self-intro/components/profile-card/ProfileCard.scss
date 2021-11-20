@@ -36,6 +36,7 @@
   & > .profile-line {
     color: #fff;
     width: 70%;
+    padding-top: 5px;
     display: inline-block;
     vertical-align: top;
     opacity: 0;
@@ -44,7 +45,7 @@
     .profile-item {
       display: flex;
       align-items: center;
-      margin: 5px;
+      margin: 2px;
     }
 
     .profile-icons {
@@ -133,7 +134,7 @@
   100% {
     padding: 0 20px;
     width: calc(100% - 40px);
-    height: 190px;
+    height: 184px;
     background: rgba(18, 159, 194, 0.993);
     border-radius: 4px;
     padding: 16px;
