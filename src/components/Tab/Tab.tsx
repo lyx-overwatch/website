@@ -1,19 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import RiseMenu from '@/components/Basic/RiseMenu';
+import Icon from '@/components/Basic/Icon';
 import './Tab.scss';
+
+
 
 const Tab = () => {
   const histroy = useHistory();
 
+  const [menuItems] = useState([
+    <Icon name="icon-zhuye" onClick={() => histroy.push('/self')}></Icon>,
+    <Icon className="heart" name="icon-icon2" onClick={() => histroy.push('/heart')}></Icon>,
+    <Icon name="icon-github" onClick={() => window.location.href = 'https://github.com/lyx-overwatch/website'}></Icon>
+  ]);
+
   return (
-    <div className="wrapper">
-      <div className="circle">
-        <i className="iconfont icon-caidanguanli plus-icon"></i>
-        <i className="iconfont icon-zhuye social" onClick={() => histroy.push('/self')}></i>
-        <i className="iconfont icon-icon2 social heart" onClick={() => histroy.push('/heart')}></i>
-        <i className="iconfont icon-github social" onClick={() => window.location.href = 'https://github.com/lyx-overwatch/website'}></i>
-      </div>
-    </div>
+    <RiseMenu menuItems={menuItems} className="tab-menu">
+    </RiseMenu >
   )
 };
 

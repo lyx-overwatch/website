@@ -1,0 +1,132 @@
+$navbar-height: 100px;
+$circle-radius: 40px;
+$backgroundColor: rgb(253, 192, 223);
+
+* {
+  box-sizing: border-box;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes sacleRightIn {
+  0% {
+    transform: scale(0, 0) translateX(0%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1, 1) translateX(-50%);
+    opacity: 1;
+  }
+}
+
+@keyframes sacleLeftIn {
+  0% {
+    transform: scale(0, 0) translateX(0%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1, 1) translateX(50%);
+    opacity: 1;
+  }
+}
+
+.circle {
+  position: absolute;
+  opacity: 0;
+  bottom: $circle-radius;
+  margin-bottom: 0;
+  height: $circle-radius;
+  width: $circle-radius;
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: var(--primary);
+  z-index: 9;
+  box-shadow: 0 5px 5px rgba(170, 170, 170, 0.35);
+  transition: height 0.3s;
+
+  .iconfont {
+    font-size: 24px;
+  }
+}
+
+.pos-r {
+  right: 0;
+  animation: sacleRightIn 2s 3.5s ease forwards;
+}
+
+.pos-l {
+  left: 0;
+  animation: sacleLeftIn 2s 3.5s ease forwards;
+}
+
+.circle:hover {
+  height: 112px;
+  border-radius: 50px;
+}
+
+.circle .plus-icon {
+  color: white;
+  transition: opacity 0.3s, transform 0.2s;
+}
+
+.circle:hover .plus-icon {
+  transform: rotate(360deg);
+  opacity: 0;
+}
+
+.circle .social {
+  position: absolute;
+  top: 195px;
+  color: white;
+  background: var(--primary);
+  height: 30px;
+  width: 30px;
+  margin-bottom: 5px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.circle .social:nth-child(2) {
+  opacity: 0;
+  transition: opacity 0.3s, top 0.5s ease;
+}
+
+.circle .social:nth-child(3) {
+  opacity: 0;
+  transition: opacity 0.3s, top 0.5s 0.1s ease;
+}
+
+.circle .social:nth-child(4) {
+  opacity: 0;
+  transition: opacity 0.3s, top 0.5s 0.22s ease;
+  margin-bottom: 0px;
+}
+
+.circle:hover .social:nth-child(2) {
+  opacity: 1;
+  top: 5px;
+}
+
+.circle:hover .social:nth-child(3) {
+  opacity: 1;
+  top: calc(5px + 30px + 5px);
+}
+
+.circle:hover .social:nth-child(4) {
+  opacity: 1;
+  top: calc(5px + 30px + 5px + 30px + 5px);
+}

@@ -17,7 +17,7 @@ export const cardLines = [
   },
   {
     icon: 'icon-xiai',
-    text: 'lol、overwatch、codeing'
+    text: 'lol、overwatch、coding'
   },
   {
     icon: 'icon-dizhi',

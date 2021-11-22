@@ -1,5 +1,6 @@
 import React from 'react';
 import { skills, intro } from './constant';
+import Icon from '@/components/Basic/Icon';
 import './IntroCard.scss';
 
 const IntroCard = () => {
@@ -11,7 +12,7 @@ const IntroCard = () => {
           return (
             <div key={index} className='skill-item'>
               <div className='skill-icons'>
-                <i className={`iconfont ${icon}`}></i>
+                <Icon name={icon}></Icon>
               </div>
             </div>
           )

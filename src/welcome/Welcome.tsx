@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router';
-import Loading from '@/components/Loading';
+import Loading from '@/components/Basic/Loading';
 import Progress from '@/self-intro/components/Progress';
 import './Welcome.scss';
 

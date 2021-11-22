@@ -1,6 +1,6 @@
 
 .profile-card {
-  background: rgba(18, 159, 194, 0.993);
+  background: var(--primary);
   width: 36px;
   height: 36px;
   position: absolute;
@@ -108,7 +108,7 @@
 
 @keyframes moveUp {
   0% {
-    background: rgba(18, 159, 194, 0.993);
+    background: var(--primary);
     top: 100%;
   }
 
@@ -135,7 +135,7 @@
     padding: 0 20px;
     width: calc(100% - 40px);
     height: 184px;
-    background: rgba(18, 159, 194, 0.993);
+    background: var(--primary);
     border-radius: 4px;
     padding: 16px;
     opacity: .94;

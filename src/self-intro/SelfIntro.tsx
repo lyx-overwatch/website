@@ -4,6 +4,7 @@ import FlashPoint from "@/components/BackGround/FlashPoint";
 import ProfileCard from './components/profile-card';
 import IntroCard from "./components/intro-card";
 import BaseLayout from "@/components/BaseLayout";
+import ThemeMenu from "./components/theme-menu/ThemeMenu";
 import "./SelfIntro.scss";
 
 const SelfIntro = () => {
@@ -13,6 +14,7 @@ const SelfIntro = () => {
       <FlashPoint>
         <ProfileCard></ProfileCard>
         <IntroCard></IntroCard>
+        <ThemeMenu></ThemeMenu>
       </FlashPoint>
     </BaseLayout>
   );

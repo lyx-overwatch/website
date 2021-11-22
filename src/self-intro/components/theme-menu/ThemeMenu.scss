@@ -1,0 +1,23 @@
+$purple: rgb(154 154 181 / 99%);
+$gray: rgb(89 89 89 / 99%);
+$blue: rgba(18, 159, 194, 0.993);
+
+.theme-menu {
+  .circle:hover {
+    background-color: blanchedalmond;
+  }
+  .theme-card {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+  .purple {
+    background-color: $purple;
+  }
+  .gray {
+    background-color: $gray;
+  }
+  .blue {
+    background-color: $blue;
+  }
+}

@@ -3,7 +3,7 @@
   padding: 16px;
   width: calc(100% - 40px);
   height: 180px;
-  background: rgba(18, 159, 194, 0.993);
+  background: var(--primary);
   top: 230px;
   border-radius: 4px;
   opacity: .94;
@@ -13,7 +13,7 @@
 
 .skill {
   width: 100%;
-  color: rgba(18, 159, 194, 0.993);
+  color: var(--primary);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
