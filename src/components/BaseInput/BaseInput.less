@@ -1,0 +1,55 @@
+@prefix: xm-base-input;
+
+.@{prefix} {
+  &- {
+    &root {
+      position: fixed;
+      bottom: 0px;
+      width: 100%;
+      height: 56px;
+      padding: 8px 8px 18px 8px;
+      // background: var(--primary);
+      background: white;
+      box-sizing: border-box;
+      z-index: 99;
+      -webkit-transform: translateZ(0); // 解决iosposition: fixed失效
+
+      .emoji-mart-search {
+        display: none;
+      }
+      .emoji-mart-preview {
+        display: none;
+      }
+    }
+    &header {
+      width: 100%;
+      height: 36px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      & > input {
+        flex: 1;
+        color: #232323;
+        height: 100%;
+        padding-left: 8px;
+        border: 1px solid white;
+        border-radius: 8px;
+      }
+
+      & > div {
+        height: 100%;
+        box-sizing: content-box;
+        padding-left: 12px;
+        padding-right: 4px;
+        display: flex;
+        align-items: center;
+
+        & > .iconfont {
+          color: var(--primary);
+          font-size: 24px;
+        }
+      }
+    }
+  }
+}

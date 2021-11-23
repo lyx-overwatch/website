@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import RiseMenu from '@/components/Basic/RiseMenu';
 import changeColors from '@/theme/css-variable';
+import { Context } from '@/components/BaseLayout/context';
 import './ThemeMenu.scss';
 
 const ThemeMenu = () => {
+  const { showMenus } = useContext(Context);
 
   const [menuItems] = useState([
     <div className="theme-card purple" onClick={() => changeColors('purple')}></div>,
@@ -12,8 +14,13 @@ const ThemeMenu = () => {
   ]);
 
   return (
-    <RiseMenu menuItems={menuItems} className="theme-menu" position="left" menuIcon="icon-beijingyanse">
-    </RiseMenu >
+    <>
+      <div style={{ visibility: showMenus ? 'visible' : 'hidden' }}>
+        <RiseMenu menuItems={menuItems} className="theme-menu" position="left" menuIcon="icon-beijingyanse">
+        </RiseMenu >
+      </div>
+    </>
+
   )
 };
 

@@ -1,0 +1,46 @@
+.air-message {
+  color: white;
+  position: absolute;
+  top: 70%;
+  left: 100%;
+  display: flex;
+  align-items: center;
+
+  .air-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    transition: 0.7s ease-in-out;
+  }
+
+  .plane-container {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+  }
+  .plane {
+    width: 60px;
+    height: 30px;
+  }
+  .rope {
+    margin: 0 -6px 0 -6px;
+    width: 30px;
+    height: 30px;
+  }
+  .message,.message_ghost {
+    position: relative;
+    height: 30px;
+    line-height: 30px;
+    background-color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: navy;
+    padding: 0px 8px;
+    transition: 0.7s ease-in-out;
+  }
+  .message_ghost {
+    margin: 0 0 0 -2px;
+  }
+}

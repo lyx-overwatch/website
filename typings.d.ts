@@ -18,3 +18,8 @@ declare var window: Window & typeof globalThis;
 interface Window {
   HanziWriter: any;
 }
+declare interface SelfElement extends Element {
+  onpointerdown?: (e: any) => void;
+}
+
+declare module 'emoji-mart';

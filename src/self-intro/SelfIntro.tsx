@@ -4,7 +4,8 @@ import FlashPoint from "@/components/BackGround/FlashPoint";
 import ProfileCard from './components/profile-card';
 import IntroCard from "./components/intro-card";
 import BaseLayout from "@/components/BaseLayout";
-import ThemeMenu from "./components/theme-menu/ThemeMenu";
+import ThemeMenu from "./components/theme-menu";
+import BuuletChat from './components/buulet-chat';
 import "./SelfIntro.scss";
 
 const SelfIntro = () => {
@@ -15,6 +16,7 @@ const SelfIntro = () => {
         <ProfileCard></ProfileCard>
         <IntroCard></IntroCard>
         <ThemeMenu></ThemeMenu>
+        <BuuletChat></BuuletChat>
       </FlashPoint>
     </BaseLayout>
   );

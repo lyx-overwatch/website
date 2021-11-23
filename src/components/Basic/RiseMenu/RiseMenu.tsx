@@ -17,8 +17,8 @@ const RiseMenu = (props: RiseMenuProps) => {
     <div className={`wrapper ${className}`}>
       <div className={`circle ${position === 'right' ? 'pos-r' : 'pos-l'}`}>
         <Icon className='plus-icon' name={menuIcon}></Icon>
-        {menuItems.map((item: any) => {
-          return <div className='social'>{item}</div>
+        {menuItems.map((item: any, index: number) => {
+          return <div className='social' key={index}>{item}</div>
         })}
       </div>
     </div>
