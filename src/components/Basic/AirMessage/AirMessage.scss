@@ -2,9 +2,9 @@
   color: white;
   position: absolute;
   top: 70%;
-  left: 100%;
   display: flex;
   align-items: center;
+  font-size: 12px;
 
   .air-header {
     position: relative;
@@ -30,6 +30,7 @@
   }
   .message,.message_ghost {
     position: relative;
+    max-width: 300px;
     height: 30px;
     line-height: 30px;
     background-color: white;
@@ -42,5 +43,14 @@
   }
   .message_ghost {
     margin: 0 0 0 -2px;
+  }
+}
+
+@keyframes fly {
+  0% {
+    left: 100%;
+  }
+  100% {
+    left: -100%;
   }
 }

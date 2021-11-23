@@ -14,17 +14,13 @@ const AirMessage = (props: AirMessageProps) => {
   const headerRef = useRef<HTMLDivElement>(null);
   const messageRef = useRef<HTMLDivElement>(null);
   const ghostRef = useRef<HTMLDivElement>(null);
+  const [WIDTH] = useState(document.body.clientWidth);
+  const [left, setLeft] = useState(WIDTH);
   const [plane, setPlane] = useState<string>('');
   const _this = useRef<{ times: number, firstWait: boolean, shakeIndex: number; flyTimer: number; shakeTimer: NodeJS.Timeout; shakeArr: any[] }>
     ({
       times: 3, firstWait: false, shakeIndex: 0, flyTimer: 0, shakeTimer: setTimeout(() => { }, 0), shakeArr: []
     }).current;
-
-  useEffect(() => {
-    const svg = planeSvg();
-    setPlane(svg);
-    move();
-  }, []);
 
   useEffect(() => {
     if (value) {
@@ -34,14 +30,12 @@ const AirMessage = (props: AirMessageProps) => {
 
   // 向左的飞行动画
   const flyAnimate = (pos: number) => {
-    const air = airRef && airRef.current;
-    if (!air) return;
-    const cur = pos - 1 / 4;
+    const cur = pos - 1;
+    setLeft(cur);
     _this.flyTimer = window.requestAnimationFrame(async () => {
-      air.style.left = `${cur}%`;
-      if (cur > 5) {
+      if (cur > 20) {
         flyAnimate(cur);
-      } else if (cur > -100) {
+      } else if (cur > -WIDTH) {
         // 模拟暂停功能
         const wait = new Promise((resolve) => {
           const timerWait = setTimeout(() => {
@@ -58,7 +52,7 @@ const AirMessage = (props: AirMessageProps) => {
         }
       } else if (cur <= -100) {
         if (_this.times > 0) {
-          flyAnimate(100);
+          flyAnimate(WIDTH);
           _this.firstWait = false;
           _this.times -= 1;
         } else {
@@ -71,7 +65,6 @@ const AirMessage = (props: AirMessageProps) => {
   // 上下摇摆动画
   const shakeAnimate = (arr: any[], index: number) => {
     const len = arr.length;
-    if (!len) return;
     const cur = arr[index];
     const motion = 3;
     const topV = cur.dataset.top ? cur.dataset.top : motion;
@@ -85,16 +78,17 @@ const AirMessage = (props: AirMessageProps) => {
   }
 
   const move = () => {
-    flyAnimate(100);
+    const air = airRef && airRef.current;
+    if (!air) return;
+    flyAnimate(WIDTH);
     const header = headerRef && headerRef.current;
     const message = messageRef && messageRef.current;
     const ghost = ghostRef && ghostRef.current;
     const arr: any[] = [];
-    if (header && message && ghost) {
-      arr.push(header);
-      arr.push(message);
-      arr.push(ghost);
-    };
+    header && arr.push(header);
+    message && arr.push(message);
+    ghost && arr.push(ghost);
+    if (!arr.length) return;
     _this.shakeArr = arr;
     shakeAnimate(arr, _this.shakeIndex);
   };
@@ -102,7 +96,8 @@ const AirMessage = (props: AirMessageProps) => {
   const reset = () => {
     const air = airRef && airRef.current;
     if (!air) return;
-    air.style.left = '100%';
+    const body = document.body;
+    setLeft(body.clientWidth);
     window.cancelAnimationFrame(_this.flyTimer);
     clearTimeout(_this.shakeTimer);
     _this.firstWait = false;
@@ -116,7 +111,8 @@ const AirMessage = (props: AirMessageProps) => {
   };
 
   return ReactDOM.createPortal((
-    <div className="air-message" ref={airRef}>
+    // <div className="air-message" ref={airRef} style={{ position: 'absolute', left: `${left}%` }}>
+    <div className="air-message" ref={airRef} style={{ position: 'absolute', transform: `translateX(${left}px) translateZ(0)` }}>
       <div className="air-header" ref={headerRef}>
         <div className="plane-container" >
           <div className="plane" dangerouslySetInnerHTML={{ __html: plane }}></div>

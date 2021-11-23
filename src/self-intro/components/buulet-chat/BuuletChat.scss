@@ -11,7 +11,6 @@
   position: absolute;
   left: 50%;
   bottom: 40px;
-  transform: translate(-50%);
   animation: hide 7.4s ease, jello-horizontal 1s 7.5s both;
 
 @keyframes hide {
@@ -31,23 +30,23 @@
   }
 
   30% {
-    transform: scale3d(1.25, 0.75, 1) translate(-50%);
+    transform: scale3d(1.25, 0.75, 1) translate(-60%);
   }
 
   40% {
-    transform: scale3d(0.75, 1.25, 1) translate(-50%);
+    transform: scale3d(0.75, 1.25, 1) translate(-40%);
   }
 
   50% {
-    transform: scale3d(1.15, 0.85, 1) translate(-50%);
+    transform: scale3d(1.15, 0.85, 1) translate(-55%);
   }
 
   65% {
-    transform: scale3d(0.95, 1.05, 1) translate(-50%);
+    transform: scale3d(0.95, 1.05, 1) translate(-48%);
   }
 
   75% {
-    transform: scale3d(1.05, 0.95, 1) translate(-50%);
+    transform: scale3d(1.05, 0.95, 1) translate(-52%);
   }
 
   100% {

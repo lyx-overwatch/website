@@ -6,7 +6,7 @@ import AirMessage from '@/components/Basic/AirMessage';
 import './BuuletChat.scss';
 
 const BuuletChat = () => {
-  const { changeMenuShow } = useContext(Context);
+  const { changeMenuShow, showMenus } = useContext(Context);
   const [val, setVal] = useState<string>('');
   const inputRef = useRef<HTMLInputElement>(null);
   const [inputShow, setShow] = useState(false);
@@ -32,7 +32,7 @@ const BuuletChat = () => {
   };
 
   return (
-    <div className="buulet-chat">
+    <div className="buulet-chat" style={{ visibility: showMenus ? 'visible' : 'hidden' }}>
       <Icon name="icon-shuru" onClick={() => handleFocus()}></Icon>
       {
         inputShow &&
