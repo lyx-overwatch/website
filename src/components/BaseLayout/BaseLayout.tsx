@@ -4,13 +4,15 @@ import { Context } from './context';
 import './BaseLayout.scss';
 
 const BaseLayout = (props: any) => {
-  const { children } = props;
+  const { children, className = '' } = props;
   const [showMenus, setShow] = useState(true);
 
   return (
     <Context.Provider value={{ showMenus, changeMenuShow: setShow }}>
-      <Tab></Tab>
-      {children}
+      <div className={`base-layout ${className}`}>
+        <Tab></Tab>
+        {children}
+      </div>
     </Context.Provider>
   )
 };

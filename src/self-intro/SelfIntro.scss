@@ -1,0 +1,15 @@
+.self-intro {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.background {
+  width: 100%;
+  height: 100%;
+
+  & > img {
+    width: 100%;
+    height: 100%;
+  }
+}

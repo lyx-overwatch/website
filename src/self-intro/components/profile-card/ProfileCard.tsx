@@ -1,13 +1,13 @@
 import React from "react";
-import profile from "@/assets/images/profile.jpg";
 import { cardLines } from "./constant";
 import "./ProfileCard.scss";
 
-const ProfileCard = () => {
+const ProfileCard = (props: any) => {
+  const { proFileSrc = '' } = props;
   return (
     <aside className="profile-card">
       <header>
-        <img src={profile} />
+        <img src={proFileSrc} />
       </header>
       <div className="profile-line">
         {cardLines.map((item, index) => {
@@ -16,9 +16,8 @@ const ProfileCard = () => {
             <div key={index} className="profile-item">
               <div className="profile-icons">
                 <i
-                  className={`iconfont ${icon} ${
-                    icon === "icon-xueli" ? "profile-icon-s" : "profile-icon"
-                  }`}
+                  className={`iconfont ${icon} ${icon === "icon-xueli" ? "profile-icon-s" : "profile-icon"
+                    }`}
                 ></i>
               </div>
               <span className="profile-text">{text}</span>
