@@ -1,4 +1,6 @@
-.buulet-chat {
+$prefix: lyx-website-buuletchat;
+
+.#{$prefix}-root {
   color: white;
   background-color: var(--primary);
   width: 40px;
@@ -11,16 +13,16 @@
   position: absolute;
   left: 50%;
   bottom: 40px;
-  animation: hide 7.4s ease, jello-horizontal 1s 7.5s both;
+  animation: hide 8.4s ease, jello-horizontal 1s 8.5s both;
+}
 
 @keyframes hide {
-    0% {
-      opacity: 0;
-    }
+  0% {
+    opacity: 0;
+  }
 
-    100% {
-      opacity: 0;
-    }
+  100% {
+    opacity: 0;
   }
 }
 

@@ -13,7 +13,7 @@ export const cardLines = [
   },
   {
     icon: 'icon-youxiang',
-    text: 'liuyunxiang3466@163.com'
+    text: '1484745929@qq.com'
   },
   {
     icon: 'icon-xiai',

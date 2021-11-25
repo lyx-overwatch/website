@@ -1,10 +1,12 @@
-.self-intro {
+$prefix: lyx-website-selfintro;
+
+.#{$prefix}-root {
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
 
-.background {
+.#{$prefix}-background {
   width: 100%;
   height: 100%;
 

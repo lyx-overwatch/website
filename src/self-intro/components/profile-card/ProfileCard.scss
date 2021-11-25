@@ -1,5 +1,7 @@
 
-.profile-card {
+$prefix: lyx-website-profilecard;
+
+.#{$prefix}-root {
   background: var(--primary);
   width: 36px;
   height: 36px;
@@ -32,48 +34,49 @@
       transition: box-shadow 3s ease;
     }
   }
+}
 
-  & > .profile-line {
-    color: #fff;
-    width: 70%;
-    padding-top: 5px;
-    display: inline-block;
-    vertical-align: top;
-    opacity: 0;
-    animation: moveUpIn 1s 3.1s ease forwards;
+.#{$prefix}-line {
+  color: #fff;
+  width: 70%;
+  padding-top: 5px;
+  display: inline-block;
+  vertical-align: top;
+  opacity: 0;
+  animation: moveUpIn 1s 3.1s ease forwards;
 
-    .profile-item {
-      display: flex;
-      align-items: center;
-      margin: 2px;
-    }
+  &-item {
+    display: flex;
+    align-items: center;
+    margin: 2px;
+  }
 
-    .profile-icons {
-      display: inline-flex;
-      justify-content: center;
-      width: 30px;
-      height: 20px;
-    }
+  &-icons {
+    display: inline-flex;
+    justify-content: center;
+    width: 30px;
+    height: 20px;
+  }
 
-    .profile-icon {
-      font-size: 16px;
-    }
+   &-icon {
+    font-size: 16px;
+  }
 
-    .profile-icon-s {
-      font-size: 14px;
-    }
+   &-icon-s {
+    font-size: 14px;
+  }
 
-    .profile-text {
-      font-size: 12px;
-      height: 20px;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-    }
-    .profile-item:nth-child(2) {
-      .profile-text {
-        line-height: 13px;
-      }
+   &-text {
+    font-size: 12px;
+    height: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+   &-item:nth-child(2) {
+     .#{$prefix}-line-text {
+      line-height: 13px;
     }
   }
 }

@@ -1,5 +1,6 @@
 $black: rgb(49, 47, 47);
 $white: #fff;
+$prefix: lyx-website-loading;
 
 @mixin pseudo ($content: '') {
   position: absolute;
@@ -14,7 +15,7 @@ $white: #fff;
   animation: scaleOut 2s 6.1s linear forwards;
 }
 
-.loading-text {
+.#{$prefix}-text {
   position: relative;
   font-weight: 600;
   font-size: 20px;
@@ -31,17 +32,20 @@ $white: #fff;
     border-radius: 50%;
     animation: dotMove 1800ms cubic-bezier(0.25,0.25,0.75,0.75) infinite;
   }
-  .letter {
+}
+ .#{$prefix}-letter {
     display: inline-block;
     position: relative;
     color: $white;
     width: 20px;
     text-align: center;
     letter-spacing: 8px;
+
     &:nth-child(1) {
       // For the letter "L"
       transform-origin: 100% 70%;
       transform: scale(1, 1.275);
+
       &::before {
         @include pseudo;
         left: 0;
@@ -49,13 +53,15 @@ $white: #fff;
         height: 20px;
         background: $black;
         transform-origin: 100% 0;
-        animation: lineStretch 1800ms cubic-bezier(0.25,0.25,0.75,0.75) infinite;
+        animation: lineStretch 1800ms cubic-bezier(0.25, 0.25, 0.75, 0.75) infinite;
       }
     }
+
     &:nth-child(5) {
       // For the letter "i"
       transform-origin: 100% 70%;
-      animation: letterStretch 1800ms cubic-bezier(0.25,0.23,0.73,0.75) infinite;
+      animation: letterStretch 1800ms cubic-bezier(0.25, 0.23, 0.73, 0.75) infinite;
+
       &::before {
         @include pseudo;
         width: 9px;
@@ -64,7 +70,6 @@ $white: #fff;
       }
     }
   }
-}
 
 // For the dot
 @keyframes dotMove {

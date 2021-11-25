@@ -1,6 +1,9 @@
 import React from 'react'
 import Icon from '../Icon'
-import './RiseMenu.scss'
+import pc from "prefix-classnames";
+import './RiseMenu.scss';
+
+const px = pc('lyx-website-risemenu');
 
 interface RiseMenuProps {
   menuItems: Array<React.ReactNode>
@@ -14,14 +17,14 @@ const RiseMenu = (props: RiseMenuProps) => {
   const { menuItems = [], menuIcon = 'icon-caidanguanli', className = '', position = "right" } = props;
 
   return (
-    <div className={`wrapper ${className}`}>
-      <div className={`circle ${position === 'right' ? 'pos-r' : 'pos-l'}`}>
-        <Icon className='plus-icon' name={menuIcon}></Icon>
+    <div className={`${px('wrapper')} ${className}`}>
+      <div className={`${px('circle')} ${px(position === 'right' ? 'pos-r' : 'pos-l')}`}>
+        <Icon className={px('plus-icon')} name={menuIcon}></Icon>
         {menuItems.map((item: any, index: number) => {
-          return <div className='social' key={index}>{item}</div>
+          return <div className={px('social')} key={index}> {item}</div>
         })}
       </div>
-    </div>
+    </div >
   )
 }
 

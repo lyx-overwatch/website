@@ -8,7 +8,10 @@ import ThemeMenu from "./components/theme-menu";
 import BuuletChat from './components/buulet-chat';
 import bg from '@/assets/images/bg.jpg'
 import profile from "@/assets/images/profile.jpg";
+import pc from "prefix-classnames";
 import "./SelfIntro.scss";
+
+const px = pc('lyx-website-selfintro');
 
 const SelfIntro = () => {
   const [loaded, setLoaded] = useState(false);
@@ -35,13 +38,13 @@ const SelfIntro = () => {
   }, [bgLoad, profileLoad])
 
   return (
-    <BaseLayout className="self-intro">
+    <BaseLayout className={px('root')}>
       {/* <PorticlePoint></PorticlePoint> */}
       <FlashPoint>
         {
           loaded &&
           <>
-            <div className="background">
+            <div className={px('background')}>
               <img src={bg}></img>
             </div>
             <ProfileCard proFileSrc={profile}></ProfileCard>

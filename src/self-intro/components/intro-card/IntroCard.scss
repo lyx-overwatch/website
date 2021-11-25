@@ -1,6 +1,8 @@
-.intro-card {
+$prefix: lyx-website-introcard;
+
+.#{$prefix}-root {
   position: absolute;
-  padding: 16px;
+  padding: 12px 16px 16px 16px;
   width: calc(100% - 40px);
   height: 180px;
   background: var(--primary);
@@ -11,7 +13,7 @@
   animation: hide 4.4s ease, scale-up-ver-center 1s 4.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
-.skill {
+.#{$prefix}-skill {
   width: 100%;
   color: var(--primary);
   display: flex;
@@ -45,13 +47,29 @@
   }
 }
 
-.intro {
+.#{$prefix}-intro {
   font-size: 12px;
+  padding: 6px;
   text-align: center;
-  height: 100px;
-  line-height: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 90px;
+  line-height: 10px;
   animation: hide 6.4s ease, slide-right 1s 6.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
 
+.#{$prefix}-github {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 24px;
+  margin: 6px;
+  animation: hide 7.4s ease, rotate-in-center 1s 7.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+
+  .iconfont {
+    font-size: 24px;
+  }
 }
 
 @keyframes rotate-in-center {

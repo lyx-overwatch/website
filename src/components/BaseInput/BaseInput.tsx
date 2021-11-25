@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom';
 import { Picker } from 'emoji-mart';
 import Icon from '../Basic/Icon';
 import { useControllableValue } from 'ahooks';
+import pc from "prefix-classnames";
 import './BaseInput.less';
 import 'emoji-mart/css/emoji-mart.css';
 
-const prefix = 'xm-base-input';
+const prefix = 'lyx-base-input';
+const px = pc(prefix);
 
 interface BaseInputProps {
   value?: string; // input受控的value值
@@ -87,8 +89,8 @@ const BaseInput = React.forwardRef((props: BaseInputProps, pRef) => {
   };
 
   return ReactDOM.createPortal(
-    <div className={`${prefix}-root`} ref={root} style={{ bottom: `${bottom}px` }}>
-      <div className={`${prefix}-header`}>
+    <div className={px('root')} ref={root} style={{ bottom: `${bottom}px` }}>
+      <div className={px('header')}>
         <input
           value={val}
           ref={ref}

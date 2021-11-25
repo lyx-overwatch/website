@@ -1,8 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import { planeSvg, rope } from './constant';
+import pc from "prefix-classnames";
 import './AirMessage.scss';
 
+const px = pc('lyx-website-air')
 interface AirMessageProps {
   value: string;
   closeMessage: () => void;
@@ -21,6 +23,13 @@ const AirMessage = (props: AirMessageProps) => {
     ({
       times: 3, firstWait: false, shakeIndex: 0, flyTimer: 0, shakeTimer: setTimeout(() => { }, 0), shakeArr: []
     }).current;
+
+  useEffect(() => {
+    return () => {
+      window.cancelAnimationFrame(_this.flyTimer);
+      clearTimeout(_this.shakeTimer);
+    }
+  }, [])
 
   useEffect(() => {
     if (value) {
@@ -111,16 +120,15 @@ const AirMessage = (props: AirMessageProps) => {
   };
 
   return ReactDOM.createPortal((
-    // <div className="air-message" ref={airRef} style={{ position: 'absolute', left: `${left}%` }}>
-    <div className="air-message" ref={airRef} style={{ position: 'absolute', transform: `translateX(${left}px) translateZ(0)` }}>
-      <div className="air-header" ref={headerRef}>
-        <div className="plane-container" >
-          <div className="plane" dangerouslySetInnerHTML={{ __html: plane }}></div>
+    <div className={px('message')} ref={airRef} style={{ position: 'absolute', transform: `translateX(${left}px) translateZ(0)` }}>
+      <div className={px('header')} ref={headerRef}>
+        <div className={px('plane_container')}>
+          <div className={px('plane')} dangerouslySetInnerHTML={{ __html: plane }}></div>
         </div>
-        <div className="rope" dangerouslySetInnerHTML={{ __html: rope() }}></div>
+        <div className={px('rope')} dangerouslySetInnerHTML={{ __html: rope() }}></div>
       </div>
-      <div className="message" ref={messageRef}>{value}</div>
-      <div className="message_ghost" ref={ghostRef}></div>
+      <div className={px('msg')} ref={messageRef}>{value}</div>
+      <div className={px('msg_ghost')} ref={ghostRef}></div>
     </div>
   ), document.body)
 };

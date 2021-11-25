@@ -3,7 +3,10 @@ import Icon from '@/components/Basic/Icon';
 import BaseInput from "@/components/BaseInput";
 import { Context } from '@/components/BaseLayout/context';
 import AirMessage from '@/components/Basic/AirMessage';
+import pc from "prefix-classnames";
 import './BuuletChat.scss';
+
+const px = pc('lyx-website-buuletchat');
 
 const BuuletChat = () => {
   const { changeMenuShow, showMenus } = useContext(Context);
@@ -32,7 +35,7 @@ const BuuletChat = () => {
   };
 
   return (
-    <div className="buulet-chat" style={{ visibility: showMenus ? 'visible' : 'hidden' }}>
+    <div className={px('root')} style={{ visibility: showMenus ? 'visible' : 'hidden' }}>
       <Icon name="icon-shuru" onClick={() => handleFocus()}></Icon>
       {
         inputShow &&

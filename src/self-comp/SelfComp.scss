@@ -1,0 +1,10 @@
+$prefix: lyx-website-selfcomp;
+
+.#{$prefix}-root {
+  background-color: wheat;
+  color: var(--primary);
+
+  & > h4 {
+    text-align: center;
+  }
+}
