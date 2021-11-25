@@ -12,6 +12,8 @@ type ScrollListProps = _Mixin<
     asyncFunction?: (params: any) => Promise<any>; // 刷新或加载的异步函数，约定是一个promise，返回一个带list属性的对象
     params?: Record<string, string | number>; // 函数入参，一般入参给定之后，之后请求接口都是修改pageNum这个参数，这个组件主要也是对这个进行封装,
     refresh?: string | null | undefined; // 是否重新请求数据(string每次传的值应该不一致，提供给组件跟踪状态, 可以使用new Date().toString())
+    onInitSuccess?: (data: any) => void; // 初始请求数据成功的回调函数, 参数为最新请求获得的数据
+    beforePullDown?: () => void; // 下拉前触发的方法
     onPullDownSuccess?: (data: any) => void; // 下拉刷新成功的回调函数, 参数为最新请求获得的数据
     /*
     上拉加载成功的回调函数, 参数为当前总的渲染数据(主要用于保存在model中，页面回退时不用重新请求数据)和pageNum值;
@@ -27,6 +29,8 @@ const ScrollList = (props: ScrollListProps) => {
     params,
     data = [],
     refresh = null,
+    onInitSuccess,
+    beforePullDown,
     onPullDownSuccess,
     onPullUpSuccess,
     ...rest
@@ -54,7 +58,7 @@ const ScrollList = (props: ScrollListProps) => {
         if (list.length > 0) {
           _this.renderList = list;
           setRender(_this.renderList);
-          if (onPullDownSuccess) onPullDownSuccess(_this.renderList);
+          if (onInitSuccess) onInitSuccess(_this.renderList);
         }
       });
     }
@@ -127,6 +131,7 @@ const ScrollList = (props: ScrollListProps) => {
   };
 
   const onPullDown = () => {
+    if (beforePullDown) beforePullDown()
     if (asyncFunction) {
       const promise = asyncFunction({
         pageSize: 4,

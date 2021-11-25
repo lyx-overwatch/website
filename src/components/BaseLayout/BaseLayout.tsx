@@ -18,7 +18,7 @@ const BaseLayout = (props: any) => {
       <div className={`${px('root')} ${className}`}>
         {
           goBack &&
-          <div className="base-layout-back">
+          <div className={px('root-back')}>
             <Icon name="icon-shangyibu" className="back-icon" onClick={() => history.goBack()}></Icon>
           </div>
         }
