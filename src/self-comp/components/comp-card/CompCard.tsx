@@ -14,8 +14,8 @@ const CompCard = (props: any) => {
     <div className={px('card')}>
       <div className={px('type')}>
         <Icon name="icon-fenlei-copy"></Icon>
+        <span className={px('text')}>{title}</span>
       </div>
-      {title}
       <div className={px('go')} onClick={() => {
         history.push(`/self-comp/${href}`);
       }}>

@@ -9,6 +9,7 @@ import { BaseScrollProps, _Mixin } from '../BaseScrollList/BaseScrollList';
 type ScrollListProps = _Mixin<
   BaseScrollProps,
   {
+    onInstance?: (s: any) => void; // 实例化scroll
     asyncFunction?: (params: any) => Promise<any>; // 刷新或加载的异步函数，约定是一个promise，返回一个带list属性的对象
     params?: Record<string, string | number>; // 函数入参，一般入参给定之后，之后请求接口都是修改pageNum这个参数，这个组件主要也是对这个进行封装,
     refresh?: string | null | undefined; // 是否重新请求数据(string每次传的值应该不一致，提供给组件跟踪状态, 可以使用new Date().toString())

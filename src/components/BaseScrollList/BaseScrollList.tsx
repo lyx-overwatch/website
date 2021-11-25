@@ -36,6 +36,7 @@ export interface BaseScrollProps {
   children: (data: any, index: number) => ReactNode; // children渲染函数
   onPullDown?: () => void; // 下拉刷新触发的方法
   onPullUp?: () => void; // 上拉加载触发的方法
+  onInstance?: (s: any) => void; // 实例化scroll，提供给外部
   scrollOptions?: ScrollOptions | null; // 自定义bs options参数
   headerElement?: React.ReactElement | null; // 列表最上方dom结构(某些场景可能需要)
   end?: boolean; // 用于判断是否已经加载完数据
@@ -50,6 +51,7 @@ const defaultProps = {
   children: () => null,
   onPullDown: () => new Promise(() => { }),
   onPullUp: () => new Promise(() => { }),
+  onInstance: () => null,
   scrollOptions: null,
   headerElement: <div style={{ height: '1px' }} />, // 某些时候better-scroll高度计算导致minScrollY为负值，加个默认子元素
   end: false,
@@ -72,6 +74,7 @@ const BaseScrollList: React.FC<BaseScrollProps> = (props: BaseScrollProps) => {
     scrollOptions,
     pullDown,
     pullUp,
+    onInstance,
     onPullDown,
     onPullUp,
     headerElement,
@@ -223,6 +226,7 @@ const BaseScrollList: React.FC<BaseScrollProps> = (props: BaseScrollProps) => {
       const s = new Bscroll(wrapper, wrapperProps);
       _this._scroll = s;
       setScroll(s);
+      if (onInstance) onInstance(s);
       // 滚动前重新计算bs高度
       _this._scroll.on('beforeScrollStart', () => {
         refreshScroll();

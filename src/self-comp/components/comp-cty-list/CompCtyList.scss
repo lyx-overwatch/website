@@ -1,0 +1,74 @@
+$prefix: lyx-website-comp-ctylist;
+
+.#{$prefix}-root {
+  width: 100%;
+}
+
+.#{$prefix}-scroll-wrapper {
+  height: 500px;
+  overflow: hidden;
+  border-top: 1px solid rgb(89 89 89 / 99%);
+  border-bottom: 1px solid #eee;
+}
+
+.#{$prefix}-letter {
+  width: 100%;
+  height: 40px;
+  padding-left: 20px;
+  line-height: 40px;
+  background-color: rgb(89 89 89 / 99%);
+  color: white;
+}
+
+.#{$prefix}-item {
+   width: 100%;
+   height: 40px;
+   padding-left: 15px;
+   font-size: 12px;
+   background-color: white;
+   line-height: 40px;
+   border-bottom: 1px solid rgb(89 89 89 / 99%);
+
+   &-code {
+    width: 25px;
+    display: inline-block;
+    text-align: left;
+   }
+
+   &-cn {
+     margin-left: 20px;
+   }
+ }
+
+ .#{$prefix}-countryscroll {
+   position: fixed;
+   top: 120px;
+   right: 0;
+   line-height: 16px;
+   font-size: 12px ;
+   padding: 2px;
+   width: 20px ;
+   z-index: 3;
+   background-color: rgb(89 89 89 / 99%);
+   color: white;
+
+   &main {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+
+     &choose {
+       width: 16px;
+       height: 16px;
+       border-radius: 50%;
+       background-color: wheat;
+       text-align: center;
+       color: black;
+     }
+
+     &normal {
+       background-color: rgb(89 89 89 / 99%);
+     }
+   }
+ }
