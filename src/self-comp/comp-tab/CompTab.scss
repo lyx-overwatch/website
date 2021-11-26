@@ -1,0 +1,27 @@
+$prefix: lyx-website-comptab;
+
+.#{$prefix} {
+  &- {
+    &root {
+      position: relative;
+      background-color: wheat;
+    }
+    &header {
+      padding: 8px 100px;
+    }
+    &contain {
+      text-align: center;
+      color: white;
+    }
+    &tab1 {
+      background-color: purple;
+      height: 100%;
+      padding: 20px;
+    }
+    &tab2 {
+      background-color: pink;
+      height: 100%;
+      padding: 20px;
+    }
+  }
+}

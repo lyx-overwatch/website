@@ -6,5 +6,9 @@ export const compDatas = [
   {
     text: '国家列表选择组件',
     href: 'cty-list'
+  },
+  {
+    text: 'Tab切换组件',
+    href: 'comp-tab'
   }
 ]
