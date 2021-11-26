@@ -6,6 +6,7 @@ import SelfComp from "./self-comp";
 import BnsList from "./self-comp/bns-list";
 import CtyList from "./self-comp/cty-list";
 import CompTab from "./self-comp/comp-tab";
+import CompRolling from "./self-comp/comp-rolling";
 import Welcome from "./welcome";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/self-comp/bns-list" component={BnsList} exact></Route>
           <Route path="/self-comp/cty-list" component={CtyList} exact></Route>
           <Route path="/self-comp/comp-tab" component={CompTab} exact></Route>
+          <Route path="/self-comp/comp-rolling" component={CompRolling} exact></Route>
         </Switch>
       </HashRouter>
     </>

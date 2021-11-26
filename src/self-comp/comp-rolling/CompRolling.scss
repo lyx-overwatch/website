@@ -1,0 +1,17 @@
+$prefix :lyx-website-comprolling;
+
+.#{$prefix} {
+  &-root {
+    position: relative;
+    background-color: wheat;
+  }
+  &-body {
+    padding: 0 20px;
+  }
+  &-contain {
+    width: 300px;
+  }
+  &-text {
+    font-size: 16px;
+  }
+}

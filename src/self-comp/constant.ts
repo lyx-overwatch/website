@@ -10,5 +10,9 @@ export const compDatas = [
   {
     text: 'Tab切换组件',
     href: 'comp-tab'
+  },
+  {
+    text: '文字滚动组件',
+    href: 'comp-rolling'
   }
 ]
