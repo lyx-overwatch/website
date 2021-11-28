@@ -1,7 +1,7 @@
 import React, { useRef, useState, useContext } from "react";
 import Icon from '@/components/Basic/Icon';
 import BaseInput from "@/components/BaseInput";
-import { Context } from '@/components/BaseLayout/context';
+import { Context } from '@/context';
 import AirMessage from '@/components/Basic/AirMessage';
 import pc from "prefix-classnames";
 import './BuuletChat.scss';

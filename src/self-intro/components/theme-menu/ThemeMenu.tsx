@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import RiseMenu from '@/components/Basic/RiseMenu';
 import changeColors from '@/theme/css-variable';
-import { Context } from '@/components/BaseLayout/context';
+import { Context } from '@/context';
 import pc from "prefix-classnames";
 import './ThemeMenu.scss';
 

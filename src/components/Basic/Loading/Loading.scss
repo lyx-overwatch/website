@@ -1,4 +1,4 @@
-$black: rgb(49, 47, 47);
+$black: #000a27;
 $white: #fff;
 $prefix: lyx-website-loading;
 
@@ -12,7 +12,7 @@ $prefix: lyx-website-loading;
   left: 50%;
   top: 40%;
   transform: translate(-50%, -50%);
-  animation: scaleOut 2s 6.1s linear forwards;
+  // animation: scaleOut 2s 6.1s linear forwards;
 }
 
 .#{$prefix}-text {
@@ -25,7 +25,7 @@ $prefix: lyx-website-loading;
     @include pseudo;
     z-index: 1;
     top: 10px;
-    left: 43px;
+    left: 47.5px;
     width: 5px;
     height: 5px;
     background: $white;
@@ -39,7 +39,7 @@ $prefix: lyx-website-loading;
     color: $white;
     width: 20px;
     text-align: center;
-    letter-spacing: 8px;
+    // letter-spacing: 8px;
 
     &:nth-child(1) {
       // For the letter "L"
@@ -73,35 +73,32 @@ $prefix: lyx-website-loading;
 
 // For the dot
 @keyframes dotMove {
-	0%, 100% {
-    transform: rotate(180deg) translate(-40px, -10px) rotate(-180deg);
-	}
-	50% {
-    transform: rotate(0deg) translate(-40px, 10px) rotate(0deg);
-	}
+  0%,
+  100% {
+    transform: rotate(180deg) translate(-40px, -10px);
+  }
+
+  50% {
+    transform: rotate(0deg) translate(-40px, 10px);
+  }
 }
 
 // For the letter "i"
 @keyframes letterStretch {
   0%, 100% {
     transform: scale(1, 0.35);
-    transform-origin: 100% 75%;
   }
   8%, 28% {
     transform: scale(1, 2.125);
-    transform-origin: 100% 67%;
   }
   37% {
     transform: scale(1, 0.875);
-    transform-origin: 100% 75%;
   }
   46% {
     transform: scale(1, 1.03);
-    transform-origin: 100% 75%;
   }
   50%, 97% {
     transform: scale(1);
-    transform-origin: 100% 75%;
   }
 }
 

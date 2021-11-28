@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import FlashPoint from "@/components/BackGround/FlashPoint";
-// import PorticlePoint from "@/components/BackGround/PorticlePoint";
+import Loading from '@/components/Basic/Loading';
 import ProfileCard from './components/profile-card';
 import IntroCard from "./components/intro-card";
 import BaseLayout from "@/components/BaseLayout";
@@ -8,12 +8,14 @@ import ThemeMenu from "./components/theme-menu";
 import BuuletChat from './components/buulet-chat';
 import bg from '@/assets/images/bg.jpg'
 import profile from "@/assets/images/profile.jpg";
+import { Context } from '@/context';
 import pc from "prefix-classnames";
 import "./SelfIntro.scss";
 
 const px = pc('lyx-website-selfintro');
 
 const SelfIntro = () => {
+  const { setImgLoad } = useContext(Context);
   const [loaded, setLoaded] = useState(false);
   const [bgLoad, setBgLoad] = useState(false);
   const [profileLoad, setProfileLoad] = useState(false);
@@ -34,12 +36,12 @@ const SelfIntro = () => {
   useEffect(() => {
     if (bgLoad && profileLoad) {
       setLoaded(true);
+      setImgLoad(true);
     }
   }, [bgLoad, profileLoad])
 
   return (
     <BaseLayout className={px('root')}>
-      {/* <PorticlePoint></PorticlePoint> */}
       <FlashPoint>
         {
           loaded &&
@@ -52,6 +54,10 @@ const SelfIntro = () => {
             <ThemeMenu></ThemeMenu>
             <BuuletChat></BuuletChat>
           </>
+        }
+        {
+          !loaded &&
+          <Loading></Loading>
         }
       </FlashPoint>
     </BaseLayout>
