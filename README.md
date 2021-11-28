@@ -18,7 +18,7 @@ git clone git@github.com:lyx-overwatch/website.git
 
 [个人网站演示地址](http://182.254.152.221/#/)
 
-## 截图
+<!-- ## 截图
 
 - 粒子动画特效以及弹幕效果
 
@@ -26,4 +26,4 @@ git clone git@github.com:lyx-overwatch/website.git
 
 - 主题切换效果
 
-![avatar](/src/assets/screenshot/theme.png)
+![avatar](/src/assets/screenshot/theme.png) -->
