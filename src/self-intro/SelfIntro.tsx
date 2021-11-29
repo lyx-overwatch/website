@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useRef } from "react";
 import FlashPoint from "@/components/BackGround/FlashPoint";
 import Loading from '@/components/Basic/Loading';
 import ProfileCard from './components/profile-card';
@@ -16,6 +16,7 @@ const px = pc('lyx-website-selfintro');
 
 const SelfIntro = () => {
   const { setImgLoad } = useContext(Context);
+  const _this = useRef({ timer: setTimeout(() => null) }).current;
   const [loaded, setLoaded] = useState(false);
   const [bgLoad, setBgLoad] = useState(false);
   const [profileLoad, setProfileLoad] = useState(false);
@@ -31,12 +32,18 @@ const SelfIntro = () => {
     profileImg.onload = () => {
       setProfileLoad(true);
     }
+    return () => {
+      window.clearTimeout(_this.timer);
+    }
   }, []);
 
   useEffect(() => {
     if (bgLoad && profileLoad) {
-      setLoaded(true);
-      setImgLoad(true);
+      _this.timer = setTimeout(() => {
+        setLoaded(true);
+        setImgLoad(true);
+        window.clearTimeout(_this.timer);
+      }, 1200);
     }
   }, [bgLoad, profileLoad])
 
