@@ -25,12 +25,47 @@ const ForkTsCheckerWebpackPlugin = require("react-dev-utils/ForkTsCheckerWebpack
 const typescriptFormatter = require("react-dev-utils/typescriptFormatter");
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+
+const extralPlugins = [];
+if (process.env.ANALYZE) {
+  extralPlugins.push(new BundleAnalyzerPlugin({
+    //  可以是`server`，`static`或`disabled`。
+    //  在`server`模式下，分析器将启动HTTP服务器来显示软件包报告。
+    //  在“静态”模式下，会生成带有报告的单个HTML文件。
+    //  在`disabled`模式下，你可以使用这个插件来将`generateStatsFile`设置为`true`来生成Webpack Stats JSON文件。
+    analyzerMode: 'server',
+    //  将在“服务器”模式下使用的主机启动HTTP服务器。
+    analyzerHost: '127.0.0.1',
+    //  将在“服务器”模式下使用的端口启动HTTP服务器。
+    analyzerPort: 8888,
+    //  路径捆绑，将在`static`模式下生成的报告文件。
+    //  相对于捆绑输出目录。
+    reportFilename: 'report.html',
+    //  模块大小默认显示在报告中。
+    //  应该是`stat`，`parsed`或者`gzip`中的一个。
+    //  有关更多信息，请参见“定义”一节。
+    defaultSizes: 'parsed',
+    //  在默认浏览器中自动打开报告
+    openAnalyzer: false,
+    //  如果为true，则Webpack Stats JSON文件将在bundle输出目录中生成
+    generateStatsFile: false,
+    //  如果`generateStatsFile`为`true`，将会生成Webpack Stats JSON文件的名字。
+    //  相对于捆绑输出目录。
+    statsFilename: 'stats.json',
+    //  stats.toJson（）方法的选项。
+    statsOptions: null,
+    logLevel: 'info' // 日志级别。可以是'信息'，'警告'，'错误'或'沉默'。
+  }))
+}
+
 const postcssNormalize = require("postcss-normalize");
 
 const appPackageJson = require(paths.appPackageJson);
 
 // Source maps are resource heavy and can cause out of memory issue for large source files.
-const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== "false";
+// const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== "false";
+const shouldUseSourceMap = false; // 关闭source-map
 
 const webpackDevClientEntry = require.resolve(
   "react-dev-utils/webpackHotDevClient"
@@ -305,6 +340,19 @@ module.exports = function (webpackEnv) {
       splitChunks: {
         chunks: "all",
         name: isEnvDevelopment,
+        minSize: 20000,
+        minChunks: 1,
+        cacheGroups: {
+          vendors: {
+            test: /[\\/]node_modules[\\/]/,
+            priority: -10
+          },
+          default: {
+            minChunks: 2,
+            priority: -20,
+            reuseExistingChunk: true
+          }
+        }
       },
       // Keep the runtime chunk separated to enable long term caching
       // https://twitter.com/wSokra/status/969679223278505985
@@ -808,6 +856,7 @@ module.exports = function (webpackEnv) {
           },
         },
       }),
+      ...extralPlugins
     ].filter(Boolean),
     // Some libraries import Node modules but don't use them in the browser.
     // Tell webpack to provide empty mocks for them so importing them works.
@@ -824,5 +873,20 @@ module.exports = function (webpackEnv) {
     // Turn off performance processing because we utilize
     // our own hints via the FileSizeReporter
     performance: false,
+    // 生产环境下对某些库的外部扩展，在index.html中再通过cdn的方式引入扩展的库
+    externals: (isEnvProduction && {
+      'react': {
+        commonjs: 'React',
+        commonjs2: 'React',
+        amd: 'React',
+        root: 'React',
+      },
+      'react-dom': {
+        commonjs: 'ReactDOM',
+        commonjs2: 'ReactDOM',
+        amd: 'ReactDOM',
+        root: 'ReactDOM',
+      },
+    }) || {}
   };
 };
