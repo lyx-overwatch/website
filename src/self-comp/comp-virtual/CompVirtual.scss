@@ -1,0 +1,17 @@
+$prefix: lyx-website-compvirtual;
+
+.#{$prefix} {
+  &- {
+    &root {
+      position: relative;
+      background-color: wheat;
+    }
+    &item {
+      height: 40px;
+      background-color: orange;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

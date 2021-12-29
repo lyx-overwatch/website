@@ -8,6 +8,7 @@ import BnsList from "./self-comp/bns-list";
 import CtyList from "./self-comp/cty-list";
 import CompTab from "./self-comp/comp-tab";
 import CompRolling from "./self-comp/comp-rolling";
+import CompVirtual from "./self-comp/comp-virtual";
 
 function App() {
   const [showMenus, setShow] = useState(true);
@@ -24,6 +25,7 @@ function App() {
           <Route path="/self-comp/cty-list" component={CtyList} exact></Route>
           <Route path="/self-comp/comp-tab" component={CompTab} exact></Route>
           <Route path="/self-comp/comp-rolling" component={CompRolling} exact></Route>
+          <Route path="/self-comp/comp-virtual" component={CompVirtual} exact></Route>
         </Switch>
       </HashRouter>
     </Context.Provider>

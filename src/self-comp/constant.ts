@@ -14,5 +14,9 @@ export const compDatas = [
   {
     text: '文字滚动组件',
     href: 'comp-rolling'
+  },
+  {
+    text: '虚拟列表组件',
+    href: 'comp-virtual'
   }
 ]

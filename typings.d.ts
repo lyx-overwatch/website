@@ -23,3 +23,9 @@ declare interface SelfElement extends Element {
 }
 
 declare module 'emoji-mart';
+
+declare module '*.module.scss' {
+  type KeyValue = { [key: string]: string };
+  const res: KeyValue;
+  export default res;
+}
