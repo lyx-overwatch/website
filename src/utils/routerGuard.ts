@@ -1,3 +1,4 @@
+// import { useRouter } from 'next/router'
 import { useHistory } from 'react-router-dom';
 
 type RouterProps = {
@@ -8,6 +9,8 @@ type RouterProps = {
 // 这边获取的router也可以是next/router，主要是获取到真正做路由跳转的对象
 export const GetRouter = () => {
   const router = useHistory();
+  // const router = useRouter();
+
   return router;
 };
 
@@ -29,6 +32,7 @@ class RouterGuard {
   constructor() {
     this.url = '';
     this.router = null;
+    // this.router = GetRouter();
     this.handler = null;
     this.handlerExector = null;
 
@@ -47,6 +51,7 @@ class RouterGuard {
   handler: null | ((url: string, next: () => void) => void);
   handlerExector: null | (() => void);
 
+  // 提供一个可以设置router属性的方法
   initRouter(router: RouterProps) {
     this.router = router;
     return new Promise((resolve) => {
