@@ -1,0 +1,70 @@
+.Root {
+  position: relative;
+}
+
+.DigitWrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 290px;
+  height: 40px;
+
+  .Error {
+    border: 1px solid #e33535 !important;
+  }
+}
+
+.Item {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  box-sizing: border-box;
+  box-shadow: 0 0 16px 0 rgb(219 219 219 / 26%);
+  border: 1px solid #dd8181;
+}
+
+@mixin focus-border {
+  border: 1px solid #1054ff;
+  color: #000000;
+}
+
+.Focus {
+  @include focus-border;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.NumberText {
+  @include focus-border;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.Input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.Resend,
+.Countdown {
+  display: block;
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.Countdown {
+  color: #b4b4b4;
+  padding-left: 5px;
+}
+
+.Resend {
+  color: #1054ff;
+  cursor: pointer;
+}

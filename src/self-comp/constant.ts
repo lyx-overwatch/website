@@ -1,11 +1,11 @@
 export const compDatas = [
   {
     text: '滚动列表组件',
-    href: 'bns-list'
+    href: 'comp-bnslist'
   },
   {
     text: '国家列表选择组件',
-    href: 'cty-list'
+    href: 'comp-ctylist'
   },
   {
     text: 'Tab切换组件',
@@ -18,5 +18,9 @@ export const compDatas = [
   {
     text: '虚拟列表组件',
     href: 'comp-virtual'
+  },
+  {
+    text: '短信验证码组件',
+    href: 'comp-code'
   }
 ]

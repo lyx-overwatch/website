@@ -4,11 +4,12 @@ import { Context } from './context';
 import HeartIntro from "./heart-intro";
 import SelfIntro from "./self-intro";
 import SelfComp from "./self-comp";
-import BnsList from "./self-comp/bns-list";
-import CtyList from "./self-comp/cty-list";
+import BnsList from "./self-comp/comp-bnslist";
+import CtyList from "./self-comp/comp-ctylist";
 import CompTab from "./self-comp/comp-tab";
 import CompRolling from "./self-comp/comp-rolling";
 import CompVirtual from "./self-comp/comp-virtual";
+import CompCode from "./self-comp/comp-code";
 
 function App() {
   const [showMenus, setShow] = useState(true);
@@ -26,6 +27,7 @@ function App() {
           <Route path="/self-comp/comp-tab" component={CompTab} exact></Route>
           <Route path="/self-comp/comp-rolling" component={CompRolling} exact></Route>
           <Route path="/self-comp/comp-virtual" component={CompVirtual} exact></Route>
+          <Route path="/self-comp/comp-code" component={CompCode} exact></Route>
         </Switch>
       </HashRouter>
     </Context.Provider>

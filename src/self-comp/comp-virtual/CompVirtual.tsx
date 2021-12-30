@@ -1,7 +1,7 @@
 import React from "react";
 import pc from "prefix-classnames";
 import BaseLayout from "@/components/BaseLayout";
-import VritualList from "@/components/VirtualList";
+import VritualList from "@/components/Basic/VirtualList";
 import "./CompVirtual.scss";
 
 const px = pc("lyx-website-compvirtual");

@@ -1,7 +1,7 @@
 import React from "react";
 import BaseLayout from "@/components/BaseLayout";
 import pc from 'prefix-classnames';
-import RollingText from "@/components/RollingText";
+import RollingText from "@/components/Basic/RollingText";
 import { textData } from './constant';
 import './CompRolling.scss';
 
