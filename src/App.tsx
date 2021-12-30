@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { HashRouter, Switch, Route } from "react-router-dom";
 import { Context } from './context';
+import RouterGuard from './utils/routerGuard';
 import HeartIntro from "./heart-intro";
 import SelfIntro from "./self-intro";
 import SelfComp from "./self-comp";
@@ -14,9 +15,10 @@ import CompCode from "./self-comp/comp-code";
 function App() {
   const [showMenus, setShow] = useState(true);
   const [imgLoaded, setImgLoad] = useState(false);
+  const router = new RouterGuard();
 
   return (
-    <Context.Provider value={{ showMenus, imgLoaded, changeMenuShow: setShow, setImgLoad }}>
+    <Context.Provider value={{ showMenus, imgLoaded, changeMenuShow: setShow, setImgLoad, router }}>
       <HashRouter>
         <Switch>
           <Route path="/" component={SelfIntro} exact></Route>

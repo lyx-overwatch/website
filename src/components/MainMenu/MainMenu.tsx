@@ -10,7 +10,7 @@ const px = pc('lyx-website-mainmenu');
 
 const MainMenu = () => {
   const histroy = useHistory();
-  const { showMenus, imgLoaded } = useContext(Context);
+  const { router, showMenus, imgLoaded } = useContext(Context);
   const [noImgLoad, setNoImg] = useState<boolean>(false);
 
   useEffect(() => {
@@ -22,9 +22,9 @@ const MainMenu = () => {
   }, [])
 
   const [menuItems] = useState([
-    <Icon name="icon-zhuye" onClick={() => histroy.push('/')}></Icon>,
-    <Icon className={px('heart')} name="icon-icon2" onClick={() => histroy.push('/heart')}></Icon>,
-    <Icon name="icon-cangku" onClick={() => histroy.push('/self-comp')}></Icon>
+    <Icon name="icon-zhuye" onClick={() => router?.push('/')}></Icon>,
+    <Icon className={px('heart')} name="icon-icon2" onClick={() => router?.push('/heart')}></Icon>,
+    <Icon name="icon-cangku" onClick={() => router?.push('/self-comp')}></Icon>
   ]);
 
   return (
