@@ -35,8 +35,12 @@ const NumberCode = (props: ICodeProps) => {
       return result;
     };
     const result = getResult(digits);
-    onChange(result);
+    setValue(result);
   }, [digits]);
+
+  useEffect(() => {
+    onChange(inputValue);
+  }, [inputValue, onChange]);
 
   const handleFocus = () => {
     if (currentIndex >= digits.length) return;
@@ -75,7 +79,6 @@ const NumberCode = (props: ICodeProps) => {
       e.preventDefault();
       handlePre(currentIndex);
     }
-
     if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'Home') {
       e.preventDefault();
     }
@@ -106,6 +109,7 @@ const NumberCode = (props: ICodeProps) => {
   };
 
   const handlePre = (index: number) => {
+    if (index === 0) return;
     const currentDigit = {
       focus: false,
       value: '',
@@ -118,7 +122,7 @@ const NumberCode = (props: ICodeProps) => {
     const currentDigits: digitType[] = newArray.concat(digits);
 
     if (index < digits.length) {
-      currentDigits[index] = index > 0 ? currentDigit : preDigit;
+      currentDigits[index] = currentDigit;
       if (index >= 1) {
         currentDigits[index - 1] = preDigit;
       }
