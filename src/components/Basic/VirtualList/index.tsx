@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useRef } from 'react';
-import styles from './VirtualList.module.scss';
+import React, { useEffect, useState, useRef } from "react";
+import styles from "./VirtualList.module.scss";
 
 interface VritualListProps {
   children: (item: any) => React.ReactNode;
@@ -9,11 +9,16 @@ interface VritualListProps {
 }
 
 const VritualList = (props: VritualListProps) => {
-  const { children, data = [], itemSize = 20, itemHeight = 40 } = props;
+  const {
+    children = () => null,
+    data = [],
+    itemSize = 20,
+    itemHeight = 40,
+  } = props;
 
   const scrollRef = useRef<HTMLDivElement>(null);
   const vritualContaninerRef = useRef<HTMLDivElement>(null);
-  const _this = useRef<{timer: number}>({timer: 0}).current;
+  const _this = useRef<{ timer: number }>({ timer: 0 }).current;
 
   const [currentData, setData] = useState(data.slice(0, itemSize));
   const [startIndex, setIndex] = useState(0);
@@ -21,7 +26,7 @@ const VritualList = (props: VritualListProps) => {
   useEffect(() => {
     setData(data.slice(0, itemSize));
     const scroll = initSoroll();
-    if(scroll) {
+    if (scroll) {
       return () => scroll();
     }
   }, [data]);
@@ -46,9 +51,9 @@ const VritualList = (props: VritualListProps) => {
       });
     };
 
-    el.addEventListener('scroll', handleScroll, false);
+    el.addEventListener("scroll", handleScroll, false);
 
-    return () => el.removeEventListener('scroll', handleScroll, false);
+    return () => el.removeEventListener("scroll", handleScroll, false);
   };
 
   return (

@@ -1,19 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import _ from 'lodash';
-import { initDigitsState } from './constant';
-import type { digitType } from './constant';
-import styles from './NumberCode.module.scss';
+import React, { useEffect, useState } from "react";
+import _ from "lodash";
+import { initDigitsState } from "./constant";
+import type { digitType } from "./constant";
+import styles from "./NumberCode.module.scss";
 
 export interface ICodeProps {
   onChange: (value: string) => any;
 }
 
 const NumberCode = (props: ICodeProps) => {
-  const {
-    onChange = () => undefined,
-  } = props;
-  const [inputId, setId] = useState('id');
-  const [inputValue, setValue] = useState('');
+  const { onChange = () => undefined } = props;
+  const [inputId, setId] = useState("id");
+  const [inputValue, setValue] = useState("");
   const [digits, setDigits] = useState<digitType[]>(initDigitsState);
   const [currentIndex, setIndex] = useState(0);
 
@@ -24,11 +22,11 @@ const NumberCode = (props: ICodeProps) => {
 
   useEffect(() => {
     const getResult = (digits: digitType[]) => {
-      let result = '';
+      let result = "";
       if (digits.length === 0) return result;
       for (let i = 0; i < digits.length; i++) {
         const { value } = digits[i];
-        if (!value || value === '|') break;
+        if (!value || value === "|") break;
         result += value;
       }
       setValue(result);
@@ -46,7 +44,7 @@ const NumberCode = (props: ICodeProps) => {
     if (currentIndex >= digits.length) return;
     const currentDigit = {
       focus: true,
-      value: '|',
+      value: "|",
     };
     const newArray: digitType[] = [];
     const currentDigits: digitType[] = newArray.concat(digits);
@@ -58,7 +56,7 @@ const NumberCode = (props: ICodeProps) => {
     if (currentIndex >= digits.length) return;
     const currentDigit = {
       focus: true,
-      value: '',
+      value: "",
     };
     const newArray: digitType[] = [];
     const currentDigits: digitType[] = newArray.concat(digits);
@@ -68,31 +66,51 @@ const NumberCode = (props: ICodeProps) => {
 
   const handleChange = _.throttle((e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
+    // 在一加手机的搜狗输入法下，切换输入方式，点击删除键的时候e.key有时候会等于Unidentified,导致无法触发handlePre方法，并且造成e.target.value改变；这里需要加一个判断避免造成bug
+    if (value.length < currentIndex) return;
+    // 通过复制验证码输入的情况
+    if (value.length === digits.length && currentIndex === 0) {
+      handleCopyToValue(value);
+      return;
+    }
     if (currentIndex < digits.length) {
       const current = value.slice(value.length - 1, value.length);
+      if (!/^\d+$/.test(current)) return;
       handleNext(currentIndex, current);
     }
   }, 100);
 
+  // 通过粘贴板的方式填入数字
+  const handleCopyToValue = (values: string) => {
+    if (!digits.length) return;
+    const newArray: digitType[] = [];
+    const currentDigits: digitType[] = newArray.concat(initDigitsState);
+    for (let i = 0; i < values.length; i++) {
+      currentDigits[i].value = values[i];
+      currentDigits[i].focus = true;
+    }
+    setDigits(currentDigits);
+    setIndex(digits.length);
+  };
+
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Backspace') {
+    if (e.key === "Unidentified") {
+      return;
+    }
+    if (e.key === "Backspace") {
       e.preventDefault();
       handlePre(currentIndex);
-    }
-    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'Home') {
-      e.preventDefault();
     }
   };
 
   const handleNext = (index: number, value: string) => {
-    if (!/^\d+$/.test(value)) return;
     const currentDigit = {
       focus: true,
       value,
     };
     const nextDigit = {
       focus: true,
-      value: '|',
+      value: "|",
     };
     const newArray: digitType[] = [];
     const currentDigits: digitType[] = newArray.concat(digits);
@@ -112,11 +130,11 @@ const NumberCode = (props: ICodeProps) => {
     if (index === 0) return;
     const currentDigit = {
       focus: false,
-      value: '',
+      value: "",
     };
     const preDigit = {
       focus: true,
-      value: '|',
+      value: "|",
     };
     const newArray: digitType[] = [];
     const currentDigits: digitType[] = newArray.concat(digits);
@@ -126,12 +144,12 @@ const NumberCode = (props: ICodeProps) => {
       if (index >= 1) {
         currentDigits[index - 1] = preDigit;
       }
-      setDigits(currentDigits);
     } else {
       currentDigits[index - 1] = preDigit;
-      setDigits(currentDigits);
     }
-    setIndex(index - 1 > 0 ? index - 1 : 0);
+    setDigits(currentDigits);
+    const preIndex = index - 1 > 0 ? index - 1 : 0;
+    setIndex(preIndex);
   };
 
   return (
@@ -141,8 +159,8 @@ const NumberCode = (props: ICodeProps) => {
           return (
             <div
               key={index}
-              className={`${styles.Item} ${focus ? styles.Focus : ''}  
-                  ${value && value !== '|' ? styles.NumberText : ''}
+              className={`${styles.Item} ${focus ? styles.Focus : ""}  
+                  ${value && value !== "|" ? styles.NumberText : ""}
                   `}
             >
               {value}
