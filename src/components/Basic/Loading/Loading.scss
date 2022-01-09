@@ -12,6 +12,7 @@ $prefix: lyx-website-loading;
   left: 50%;
   top: 40%;
   transform: translate(-50%, -50%);
+  z-index: 99999;
   // animation: scaleOut 2s 6.1s linear forwards;
 }
 

@@ -4,9 +4,11 @@ import "./Loading.scss";
 
 const px = pc('lyx-website-loading');
 
-const Loading = () => {
+const Loading = (props: any) => {
+  const { style } = props;
+
   return (
-    <div id="loading-container">
+    <div id="loading-container" style={style}>
       <p className={px('text')}>
         <span className={px('letter')}>L</span>
         <span className={px('letter')}>o</span>

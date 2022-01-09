@@ -3,3 +3,28 @@ $prefix: lyx-website-mainmenu;
 .#{$prefix}-heart {
   font-size: 28px !important;
 }
+
+.#{$prefix}-to-yso {
+  position: absolute;
+  z-index: 9990;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgb(2, 2, 44);
+  color: white;
+}
+
+.#{$prefix}-text {
+  position: absolute;
+  z-index: 9991;
+  width: 200px;
+  top: 30%;
+  left: 50%;
+  font-size: .14rem;
+  font-weight: 600;
+  transform: translate(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
