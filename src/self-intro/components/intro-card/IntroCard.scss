@@ -48,14 +48,14 @@ $prefix: lyx-website-introcard;
 }
 
 .#{$prefix}-intro {
-  font-size: 12px;
+  font-size: 13px;
   padding: 6px;
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   height: 90px;
-  line-height: 10px;
+  line-height: 14px;
   animation: hide 6.4s ease, slide-right 1s 6.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 

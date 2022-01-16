@@ -45,7 +45,7 @@ const MainMenu = () => {
         toYso &&
         <div className={px('to-yso')}>
           <div className={px('text')}>
-            <span>正在前往yso组件库</span>
+            <span>正在前往ysol组件库</span>
           </div>
           <Loading></Loading>
         </div>
