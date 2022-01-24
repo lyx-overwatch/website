@@ -28,6 +28,5 @@ export const skills = [
 export const intro =
   '我是一名前端开发，以上技术构建该网站' +
   '<br><br>试试给我换个主题颜色,发送弹幕' +
-  '<br><br>看看爱心飘落和我的常用组件仓库吧' +
-  '<br></br>下方是我的github链接';
+  '<br><br>看看爱心飘落和我的组件库ysol吧';
 

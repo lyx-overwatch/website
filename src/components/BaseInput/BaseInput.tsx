@@ -1,6 +1,6 @@
 import React, { useImperativeHandle, useRef, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
-// import { Picker } from 'emoji-mart';
+import { Picker } from 'emoji-mart';
 import Icon from '../Basic/Icon';
 import { useControllableValue } from 'ahooks';
 import pc from "prefix-classnames";
@@ -79,14 +79,14 @@ const BaseInput = React.forwardRef((props: BaseInputProps, pRef) => {
     };
   }, []);
 
-  // const emojiClick = (emoji: any) => {
-  //   const { native } = emoji;
-  //   if (val) {
-  //     setVal(val + native);
-  //   } else {
-  //     setVal(native);
-  //   }
-  // };
+  const emojiClick = (emoji: any) => {
+    const { native } = emoji;
+    if (val) {
+      setVal(val + native);
+    } else {
+      setVal(native);
+    }
+  };
 
   return ReactDOM.createPortal(
     <div className={px('root')} ref={root} style={{ bottom: `${bottom}px` }}>
@@ -149,7 +149,7 @@ const BaseInput = React.forwardRef((props: BaseInputProps, pRef) => {
           <Icon name="icon-400biaoqing_biaoqing"></Icon>
         </div>
       </div>
-      {/* <div style={{ display: emojiShow ? '' : 'none' }}>
+      <div style={{ display: emojiShow ? '' : 'none' }}>
         <Picker
           set="apple"
           showPreview={false}
@@ -178,7 +178,7 @@ const BaseInput = React.forwardRef((props: BaseInputProps, pRef) => {
             },
           }}
         />
-      </div> */}
+      </div>
     </div>, document.body)
 });
 
