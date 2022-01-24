@@ -1,4 +1,4 @@
-@import url('./assets/iconfont/iconfont.css');
+@import url("./assets/iconfont/iconfont.css");
 
 html {
   width: 100%;
@@ -8,8 +8,8 @@ html {
 body,
 #root {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -20,7 +20,7 @@ body,
   /*移动端给父元素构造3d环境，让动画稳定运行*/
   perspective: 1000;
   backface-visibility: hidden;
-  transform-style: preserve-3d; 
+  transform-style: preserve-3d;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   -webkit-user-select: none;
   -moz-user-focus: none;
@@ -28,10 +28,14 @@ body,
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
 :root {
   --primary: rgb(89 89 89 / 99%);
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
