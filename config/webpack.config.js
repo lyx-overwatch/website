@@ -878,21 +878,21 @@ module.exports = function (webpackEnv) {
     // our own hints via the FileSizeReporter
     performance: false,
     // 生产环境下对某些库的外部扩展，在index.html中再通过cdn的方式引入扩展的库
-    externals:
-      (isEnvProduction && {
-        react: {
-          commonjs: "React",
-          commonjs2: "React",
-          amd: "React",
-          root: "React",
-        },
-        "react-dom": {
-          commonjs: "ReactDOM",
-          commonjs2: "ReactDOM",
-          amd: "ReactDOM",
-          root: "ReactDOM",
-        },
-      }) ||
-      {},
+    // externals:
+    //   (isEnvProduction && {
+    //     react: {
+    //       commonjs: "React",
+    //       commonjs2: "React",
+    //       amd: "React",
+    //       root: "React",
+    //     },
+    //     "react-dom": {
+    //       commonjs: "ReactDOM",
+    //       commonjs2: "ReactDOM",
+    //       amd: "ReactDOM",
+    //       root: "ReactDOM",
+    //     },
+    //   }) ||
+    //   {},
   };
 };
