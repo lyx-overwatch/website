@@ -13,4 +13,4 @@ jobs:
         with:
             secretId: ${{ secrets.SECRET_ID }}
             secretKey: ${{ secrets.SECRET_KEY }}
-            staticSrcPath: tencent-build
+            staticDestPath: /root/usr/share/nginx/tencent-build
