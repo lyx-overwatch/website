@@ -1,0 +1,13 @@
+name: Webiste-CI
+on:
+  push:
+    branches: [ main ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: install packages
+        run: npm run install
+      - name: build project
+        run: npm run build
