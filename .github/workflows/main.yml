@@ -19,5 +19,5 @@ jobs:
           port: 22
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
           local_path: './build/*'
-          remote_path: '/usr/share/nginx/tencent-build'  
+          remote_path: '/usr/share/nginx/html/build'  
 
