@@ -99,11 +99,11 @@ const HeartIntro = () => {
     await generateAnimation(nextList);
   };
 
-  useEffect(() => {
-    if (day && window.HanziWriter) {
-      createText();
-    }
-  }, [day]);
+  // useEffect(() => {
+  //   if (day && window.HanziWriter) {
+  //     createText();
+  //   }
+  // }, [day]);
 
   return (
     <BaseLayout>

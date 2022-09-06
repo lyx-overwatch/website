@@ -36,6 +36,4 @@ code {
   --primary: rgb(89 89 89 / 99%);
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+

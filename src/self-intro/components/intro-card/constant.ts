@@ -26,7 +26,7 @@ export const skills = [
 ];
 
 export const intro =
-  '我是一名前端开发，以上技术构建该网站' +
+  '我是一名前端开发，技术框架为React' +
   '<br><br>试试给我换个主题颜色,发送弹幕' +
-  '<br><br>看看爱心飘落和我的组件库ysol吧';
+  '<br><br>看看爱心飘落和我的组件库 ysol 吧';
 

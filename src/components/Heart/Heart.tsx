@@ -113,8 +113,8 @@ const Heart = (props: HeartProps) => {
       }}
       ref={ref}
     >
-      <div style={{ display: !text ? '' : 'none' }} className={px('heart')} onClick={() => showText()}></div>
-      <div style={{ display: text ? '' : 'none', color: textColor }} className={px('text')} onClick={() => hideText()}>{text}</div>
+      <div style={{ display: !text ? '' : 'none' }} className={px('heart')} onClick={() => undefined}></div>
+      <div style={{ display: text ? '' : 'none', color: textColor }} className={px('text')} onClick={() => undefined}>{text}</div>
     </div>
   )
 };
