@@ -5,7 +5,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import pc from "prefix-classnames";
 import { getRandomVars } from './constant';
-import { hearts } from '../../heart-intro/constant';
+// import { hearts } from '../../heart-intro/constant';
 import { requestAnimationFrame, cancelAnimationFrame } from '@/utils';
 import "./Heart.less";
 
@@ -22,7 +22,7 @@ const Heart = (props: HeartProps) => {
   const [offsetX, setOffsetX] = useState<number>(0);
   const [offsetY, setOffsetY] = useState<number>(0);
   const [text, setText] = useState<string>('');
-  const [textColor, setColor] = useState<string>('#266352');
+  const [textColor] = useState<string>('#266352');
 
   const _this = useRef<{
     timer: number;
@@ -87,22 +87,22 @@ const Heart = (props: HeartProps) => {
     };
   }, [rootHeight, rootWidth]);
 
-  const showText = () => {
-    const { curTextIndex, curTextColor } = getRandomVars(rootWidth, length, index);
-    if (_this.textIndex < 0) {
-      _this.textIndex = curTextIndex;
-    } else {
-      _this.textIndex += 1;
-      _this.textIndex %= length;
-    }
-    const curText = hearts[_this.textIndex].text;
-    setText(curText);
-    setColor(curTextColor);
-  }
+  // const showText = () => {
+  //   const { curTextIndex, curTextColor } = getRandomVars(rootWidth, length, index);
+  //   if (_this.textIndex < 0) {
+  //     _this.textIndex = curTextIndex;
+  //   } else {
+  //     _this.textIndex += 1;
+  //     _this.textIndex %= length;
+  //   }
+  //   const curText = hearts[_this.textIndex].text;
+  //   setText(curText);
+  //   setColor(curTextColor);
+  // }
 
-  const hideText = () => {
-    setText('');
-  }
+  // const hideText = () => {
+  //   setText('');
+  // }
 
   return (
     <div

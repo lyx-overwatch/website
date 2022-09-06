@@ -7,7 +7,7 @@ import {
   start,
   dynamicPreTexts,
   dynamicNextTexts,
-  WRITER_CONFIG,
+  // WRITER_CONFIG,
 } from "./constant";
 import { requestAnimationFrame, cancelAnimationFrame } from "@/utils";
 import "./HeartIntro.less";
@@ -24,7 +24,7 @@ const HeartIntro = () => {
   const [rootHeight, setHetght] = useState<number>(0);
   const [rootWidth, setWidth] = useState<number>(0);
   const [day, setDay] = useState<number>(0);
-  const [showDayText, setShow] = useState<boolean>(false);
+  const [showDayText] = useState<boolean>(false);
 
   const getCurDay = () => {
     _this.startTimer = requestAnimationFrame(() => {
@@ -61,43 +61,43 @@ const HeartIntro = () => {
     };
   }, []);
 
-  const generateAnimation = async (list: Array<any>) => {
-    for (const write of list) {
-      await write.animateCharacter();
-    }
-    return true;
-  };
+  // const generateAnimation = async (list: Array<any>) => {
+  //   for (const write of list) {
+  //     await write.animateCharacter();
+  //   }
+  //   return true;
+  // };
 
-  const showDay = () => {
-    new Promise((resolve) => {
-      _this.delayTimer = setTimeout(() => {
-        clearTimeout(_this.delayTimer as number);
-        setShow(true);
-        resolve(true);
-      }, 500);
-    });
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(true);
-      }, 1000);
-    });
-  };
+  // const showDay = () => {
+  //   new Promise((resolve) => {
+  //     _this.delayTimer = setTimeout(() => {
+  //       clearTimeout(_this.delayTimer as number);
+  //       setShow(true);
+  //       resolve(true);
+  //     }, 500);
+  //   });
+  //   return new Promise((resolve) => {
+  //     setTimeout(() => {
+  //       resolve(true);
+  //     }, 1000);
+  //   });
+  // };
 
-  const createText = async () => {
-    const preList: any[] = [];
-    const nextList: any[] = [];
-    dynamicPreTexts.forEach((item) => {
-      const { id, text } = item;
-      preList.push(window.HanziWriter.create(id, text, WRITER_CONFIG));
-    });
-    dynamicNextTexts.forEach((item) => {
-      const { id, text } = item;
-      nextList.push(window.HanziWriter.create(id, text, WRITER_CONFIG));
-    });
-    await generateAnimation(preList);
-    await showDay();
-    await generateAnimation(nextList);
-  };
+  // const createText = async () => {
+  //   const preList: any[] = [];
+  //   const nextList: any[] = [];
+  //   dynamicPreTexts.forEach((item) => {
+  //     const { id, text } = item;
+  //     preList.push(window.HanziWriter.create(id, text, WRITER_CONFIG));
+  //   });
+  //   dynamicNextTexts.forEach((item) => {
+  //     const { id, text } = item;
+  //     nextList.push(window.HanziWriter.create(id, text, WRITER_CONFIG));
+  //   });
+  //   await generateAnimation(preList);
+  //   await showDay();
+  //   await generateAnimation(nextList);
+  // };
 
   // useEffect(() => {
   //   if (day && window.HanziWriter) {
